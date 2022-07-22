@@ -31,11 +31,11 @@ const Wrapper = styled.div`
     color: white;
     font-weight: bold;
     background: #31d7a9;
-    min-width: 4rem;
+    min-width: 3rem;
     min-height: 4rem;
+    display: flex;
     justify-content: center;
     align-items: center;
-    padding-bottom: 20px;
     clip-path: polygon(50% 0%, 100% 0, 100% 100%, 50% 75%, 0 100%, 0 0);
   }
   :after {

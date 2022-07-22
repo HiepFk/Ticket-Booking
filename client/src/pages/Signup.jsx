@@ -67,13 +67,11 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   padding: 0 1rem;
-  height: 103vh;
-
   .wrapper {
     z-index: 99;
     margin: 10rem auto 3rem;
     color: white;
-    max-width: 768px;
+    max-width: 992px;
     box-shadow: #000000 0px 0px 29.4px 0.6px;
     display: flex;
     justify-content: center;

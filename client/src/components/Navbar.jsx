@@ -50,6 +50,9 @@ function Navbar() {
             );
           })}
         </ul>
+        <Link to={`/login`} className="header_link">
+          Login
+        </Link>
       </div>
     </Wrapper>
   );
@@ -75,7 +78,7 @@ const Wrapper = styled.div`
   }
   .choise {
     position: fixed;
-    top: 5rem;
+    top: 4.5rem;
     left: 0;
     width: 30%;
     height: 100vh;
@@ -107,6 +110,7 @@ const Wrapper = styled.div`
   .btn_open {
     font-size: 2rem;
     cursor: pointer;
+    transition: all 0.25s linear;
   }
 
   @media (min-width: 768px) {

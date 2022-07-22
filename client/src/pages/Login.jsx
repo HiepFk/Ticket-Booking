@@ -56,8 +56,7 @@ function Login() {
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
-  padding: 0 1rem;
-  height: 103vh;
+  padding: 0 2rem;
   .wrapper {
     z-index: 99;
     margin: 10rem auto 3rem;
@@ -65,7 +64,6 @@ const Wrapper = styled.div`
     max-width: 768px;
     box-shadow: #000000 0px 0px 29.4px 0.6px;
     display: flex;
-
     justify-content: center;
     flex-direction: column;
     padding: 2.5rem 5rem;
