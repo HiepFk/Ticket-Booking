@@ -26,7 +26,9 @@ function Header() {
     <Wrapper className="">
       <div className="wrapper" ref={wrapperRef}>
         <div className="header app">
-          <img src={img} alt="" className="img" />
+          <Link to={"/"} onClick={() => setIndex(1)}>
+            <img src={img} alt="" className="img" />
+          </Link>
           <div className="menu">
             {links.map((item) => {
               return (
@@ -59,7 +61,7 @@ const Wrapper = styled.div`
   width: 100%;
   top: 0;
   left: 0;
-  z-index: 99;
+  z-index: 999;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   .change {
     background-color: #0f0f0f;

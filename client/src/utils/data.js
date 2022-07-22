@@ -10,6 +10,10 @@ import e_3 from "../assets/event/3.jpg";
 import e_4 from "../assets/event/4.jpg";
 import e_5 from "../assets/event/5.jpg";
 
+import f_1 from "../assets/foods/1.png";
+import f_2 from "../assets/foods/2.png";
+import f_3 from "../assets/foods/3.png";
+
 export const movies = [
   {
     id: 1,
@@ -63,5 +67,23 @@ export const events = [
     id: 5,
     name: "Social Media Marketing World",
     url: e_5,
+  },
+];
+
+export const foods = [
+  {
+    id: 1,
+    name: "Muchaco, Crispy Taco, Bean Burrito",
+    url: f_1,
+  },
+  {
+    id: 2,
+    name: "Crispy Beef Taco, Beef Mucho Nachos",
+    url: f_2,
+  },
+  {
+    id: 3,
+    name: "Chicken Quesadilla Crispy Beef Taco",
+    url: f_3,
   },
 ];

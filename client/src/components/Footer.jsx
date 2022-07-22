@@ -51,7 +51,6 @@ function Footer() {
   );
 }
 const Wrapper = styled.div`
-  margin-top: 3rem;
   position: relative;
   width: 100%;
   height: 20rem;

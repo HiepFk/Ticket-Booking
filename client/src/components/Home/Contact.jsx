@@ -25,6 +25,7 @@ function Contact() {
 }
 const Wrapper = styled.div`
   margin-top: 5rem;
+  margin-bottom: 5rem;
   height: 40vh;
   position: relative;
   border-radius: 1.5rem;
