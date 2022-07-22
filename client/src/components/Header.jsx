@@ -1,33 +1,54 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import img from "../assets/logo.png";
 import { links } from "../utils/link";
 function Header() {
   const [index, setIndex] = useState(1);
+  const wrapperRef = useRef();
+  useEffect(() => {
+    const changeColorWrapper = () => {
+      if (
+        document.body.scrollTop > 50 ||
+        document.documentElement.scrollTop > 50
+      ) {
+        wrapperRef.current.classList.add("change");
+      } else {
+        wrapperRef.current.classList.remove("change");
+      }
+    };
+    window.addEventListener("scroll", changeColorWrapper);
+    return () => {
+      window.removeEventListener("scroll", changeColorWrapper);
+    };
+  }, []);
   return (
-    <Wrapper>
-      <div className="header app">
-        <img src={img} alt="" className="img" />
-        <div className="menu">
-          {links.map((item) => {
-            return (
-              <Link
-                to={item.url}
-                key={item.id}
-                className={
-                  index === item.id ? "item menu_item active" : "item menu_item"
-                }
-                onClick={() => setIndex(item.id)}
-              >
-                {item.title}
-              </Link>
-            );
-          })}
+    <Wrapper className="">
+      <div className="wrapper" ref={wrapperRef}>
+        <div className="header app">
+          <img src={img} alt="" className="img" />
+          <div className="menu">
+            {links.map((item) => {
+              return (
+                <Link
+                  to={item.url}
+                  key={item.id}
+                  className={
+                    index === item.id
+                      ? "item menu_item active"
+                      : "item menu_item"
+                  }
+                  onClick={() => setIndex(item.id)}
+                >
+                  {item.title}
+                </Link>
+              );
+            })}
+          </div>
+          <Link to={`/login`} className="btn item">
+            Login
+          </Link>
         </div>
-        <Link to={`/login`} className="btn item">
-          Login
-        </Link>
       </div>
     </Wrapper>
   );
@@ -40,6 +61,9 @@ const Wrapper = styled.div`
   left: 0;
   z-index: 99;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  .change {
+    background-color: #0f0f0f;
+  }
   .header {
     width: 100%;
     display: flex;

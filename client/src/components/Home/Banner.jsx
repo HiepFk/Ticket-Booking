@@ -59,10 +59,10 @@ function Banner() {
 const Wrapper = styled.div`
   .item {
     height: 100vh;
-  }
-  .item {
     position: relative;
+    /* padding: 0 1rem; */
   }
+
   .container {
     position: absolute;
     top: 0;
@@ -75,11 +75,12 @@ const Wrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 15rem;
+    padding: 0 1rem;
+    padding-top: calc(45vh - 12rem);
     z-index: 99;
     margin: 0 auto;
     color: white;
-    max-width: 1012px;
+    max-width: 1024px;
   }
   .img {
     width: 20rem;

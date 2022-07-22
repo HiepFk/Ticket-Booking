@@ -18,7 +18,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #001232;
+  background-color: #0f0f0f;
 }
 
 code {
@@ -47,10 +47,10 @@ img {
   cursor: pointer;
 }
 ::-webkit-scrollbar-track {
-  background: white;
+  background: #000000;
 }
 ::-webkit-scrollbar-thumb {
-  background: #000000;
+  background: white;
 }
 
 .app {
@@ -59,6 +59,7 @@ img {
   color: white;
   max-width: 1200px;
   margin: 0rem auto;
+  padding: 0 1rem;
 }
 .page {
   padding-top: 10rem;
