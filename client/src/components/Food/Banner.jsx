@@ -30,13 +30,13 @@ const Wrapper = styled.div`
     bottom: 0;
     left: 0;
     background-color: rgba(7, 24, 34, 0.4);
+    height: 50vh;
   }
   .info {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 0 1rem;
     padding-top: 20vh;
     z-index: 99;
     margin: 0 auto;

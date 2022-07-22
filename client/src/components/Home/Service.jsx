@@ -72,5 +72,17 @@ const Wrapper = styled.div`
     font-size: 1.25rem;
     padding-bottom: 1rem;
   }
+  @media (max-width: 768px) {
+    height: 40vh;
+    .text {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .text_small {
+      font-size: 1rem;
+      text-align: center;
+    }
+    /* display: none; */
+  }
 `;
 export default Service;

@@ -11,12 +11,14 @@ import {
   Food,
 } from "./pages";
 import Header from "./components/Header";
+import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Error from "./components/Error";
 function App() {
   return (
     <div>
       <Header />
+      <Navbar />
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/login" element={<Login />} />

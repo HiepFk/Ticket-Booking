@@ -106,6 +106,9 @@ const Wrapper = styled.div`
     padding: 0.5rem 1.5rem;
     border-radius: 1rem;
   }
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export default Header;

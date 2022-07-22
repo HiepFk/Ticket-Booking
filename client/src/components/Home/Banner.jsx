@@ -58,7 +58,7 @@ function Banner() {
 }
 const Wrapper = styled.div`
   .item {
-    height: 100vh;
+    min-height: 100vh;
     position: relative;
     /* padding: 0 1rem; */
   }
@@ -115,6 +115,38 @@ const Wrapper = styled.div`
     border: 2px solid white;
     padding: 0.3rem 1.05rem;
     color: white;
+  }
+  @media (max-width: 768px) {
+    .info {
+      flex-direction: column;
+      text-align: center;
+      padding-top: 15vh;
+    }
+    .desc {
+      display: none;
+    }
+    .name {
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .right {
+      margin-left: 0rem;
+    }
+  }
+  @media (max-width: 600px) {
+    .info {
+      padding-top: 20vh;
+    }
+    .name {
+      font-size: 2rem;
+    }
+    .img {
+      width: 15rem;
+    }
+    .btn {
+      font-size: 1.25rem;
+    }
   }
 `;
 export default Banner;

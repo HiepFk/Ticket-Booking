@@ -35,6 +35,21 @@ const Wrapper = styled.div`
   .swiper-slide {
     width: 30%;
   }
+  @media (max-width: 992px) {
+    .swiper-slide {
+      width: 37%;
+    }
+  }
+  @media (max-width: 768px) {
+    .swiper-slide {
+      width: 45%;
+    }
+  }
+  @media (max-width: 600px) {
+    .swiper-slide {
+      width: 65%;
+    }
+  }
 `;
 
 export default List;
