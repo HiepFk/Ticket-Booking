@@ -37,12 +37,12 @@ const Wrapper = styled.div`
   }
   @media (max-width: 992px) {
     .swiper-slide {
-      width: 37%;
+      width: 40%;
     }
   }
   @media (max-width: 768px) {
     .swiper-slide {
-      width: 45%;
+      width: 50%;
     }
   }
   @media (max-width: 600px) {

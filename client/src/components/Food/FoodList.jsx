@@ -20,7 +20,6 @@ function FoodList() {
 const Wrapper = styled.div`
   text-align: center;
   margin-bottom: 5rem;
-  margin-top: 2rem;
   .title_1 {
     font-size: 2rem;
     color: #0ea292;

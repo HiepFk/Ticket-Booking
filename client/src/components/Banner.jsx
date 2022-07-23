@@ -1,7 +1,6 @@
 import React from "react";
-import img from "../../assets/foods/banner.jpg";
 import styled from "styled-components";
-function Banner() {
+function Banner({ img, title, desc }) {
   return (
     <Wrapper
       style={{
@@ -10,9 +9,9 @@ function Banner() {
     >
       <div className="wrapper">
         <div className="info">
-          <div className="title">WELCOME</div>
+          <div className="title">{title}</div>
           <div className="title_small">
-            FOOD FK'CINEMA
+            {desc}
             <span>👋</span>
           </div>
         </div>
@@ -23,6 +22,7 @@ function Banner() {
 
 const Wrapper = styled.div`
   height: 50vh;
+  margin-bottom: 2rem;
   .wrapper {
     position: absolute;
     top: 0;
@@ -47,11 +47,19 @@ const Wrapper = styled.div`
     font-size: 3.5rem;
     font-weight: bold;
     letter-spacing: 5px;
+    text-transform: uppercase;
+    text-align: center;
   }
   .title_small {
     font-size: 1.5rem;
     font-weight: 400;
     margin-top: 1rem;
+    text-align: center;
   }
+  /* @media (max-width: 768px) {
+    .info {
+      padding-top: 10vh;
+    }
+  } */
 `;
 export default Banner;

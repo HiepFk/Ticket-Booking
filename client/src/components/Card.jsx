@@ -4,7 +4,7 @@ import styled from "styled-components";
 function Card({ data, type }) {
   return (
     <Wrapper>
-      <div className="wrapper">
+      <div className="wrapper2">
         <img src={data?.url} alt="" className="img" />
         {type === "event" && (
           <div className="date">
@@ -18,7 +18,7 @@ function Card({ data, type }) {
   );
 }
 const Wrapper = styled.div`
-  .wrapper {
+  .wrapper2 {
     overflow: hidden;
     width: 100%;
     height: 30rem;

@@ -1,7 +1,8 @@
 import React from "react";
+import styled from "styled-components";
 
 function Movie() {
-  return <div>Movie</div>;
+  return <Wrapper></Wrapper>;
 }
-
+const Wrapper = styled.div``;
 export default Movie;
