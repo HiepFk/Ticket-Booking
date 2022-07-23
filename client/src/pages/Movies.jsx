@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Sort from "../components/Movie/Sort";
 import Filter from "../components/Movie/Filter";
@@ -6,6 +6,8 @@ import List from "../components/Movie/List";
 import Banner from "../components/Banner";
 import img from "../assets/movie/banner.jpg";
 function Movies() {
+  const [listView, setListView] = useState(false);
+
   return (
     <Wrapper>
       <Banner img={img} title="Welcome" desc="GET MOVIE TICKETS" />
@@ -14,8 +16,8 @@ function Movies() {
           <Filter />
         </div>
         <div className="right">
-          <Sort />
-          <List />
+          <Sort listView={listView} setListView={setListView} />
+          <List listView={listView} />
           <div className="btn">Load more</div>
         </div>
       </div>
@@ -48,6 +50,23 @@ const Wrapper = styled.div`
     border-radius: 1rem;
     font-weight: bold;
     font-size: 1rem;
+  }
+  @media (max-width: 992px) {
+    .wrapper {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .right,
+    .left {
+      width: 100%;
+    }
+    .left {
+      margin-bottom: 2rem;
+    }
+    .btn {
+      padding: 0.65rem;
+    }
   }
 `;
 

@@ -3,11 +3,12 @@ import styled from "styled-components";
 import { BsFillGridFill } from "react-icons/bs";
 import { FaList } from "react-icons/fa";
 
-function Sort() {
-  const [listView, setListView] = useState(false);
+function Sort({ listView, setListView }) {
+  // const [listView, setListView] = useState(false);
   return (
     <Wrapper>
       <div className="icons">
+        <label htmlFor="sort">Sort view : </label>
         <div
           className={listView ? "icon" : "icon active"}
           onClick={() => setListView(false)}
@@ -46,7 +47,6 @@ const Wrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 14%;
   }
   .icon {
     padding: 0.5rem 1rem;
@@ -55,6 +55,7 @@ const Wrapper = styled.div`
     font-size: 1rem;
     opacity: 0.8;
     cursor: pointer;
+    margin-right: 1rem;
   }
   .active {
     color: #31d7a9;
@@ -77,6 +78,12 @@ const Wrapper = styled.div`
     background-image: none;
     cursor: pointer;
     font-size: 1rem;
+  }
+  @media (max-width: 600px) {
+    flex-direction: column;
+    .icons {
+      margin-bottom: 1rem;
+    }
   }
 `;
 export default Sort;

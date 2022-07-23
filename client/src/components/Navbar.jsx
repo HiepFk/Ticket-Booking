@@ -113,7 +113,7 @@ const Wrapper = styled.div`
     transition: all 0.25s linear;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     display: none;
   }
 `;

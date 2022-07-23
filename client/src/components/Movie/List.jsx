@@ -2,16 +2,10 @@ import React from "react";
 import GridView from "./GridView";
 import ListView from "./ListView";
 import styled from "styled-components";
-function List() {
-  return (
-    <Wrapper>
-      <GridView />
-      <ListView />
-    </Wrapper>
-  );
+function List({ listView }) {
+  return <Wrapper>{listView ? <ListView /> : <GridView />}</Wrapper>;
 }
 const Wrapper = styled.div`
-  text-align: center;
   width: 100%;
 `;
 export default List;

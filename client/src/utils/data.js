@@ -213,3 +213,23 @@ export const foods = [
     url: f_24,
   },
 ];
+
+export const classify = [
+  { id: 1, title: "G" },
+  { id: 2, title: "PG" },
+  { id: 3, title: "PG13" },
+  { id: 4, title: "R" },
+  { id: 5, title: "NC-17" },
+];
+export const genre = [
+  { id: 6, title: "HORROR" },
+  { id: 7, title: "ROMANCE" },
+  { id: 8, title: "ACTION" },
+  { id: 9, title: "COMEDY" },
+  { id: 10, title: "ANIMATION" },
+  { id: 11, title: "SCI-FI" },
+];
+export const experience = [
+  { id: 12, title: "2D" },
+  { id: 13, title: "3D" },
+];
