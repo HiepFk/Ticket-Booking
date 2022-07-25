@@ -1,11 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-
+import { Link } from "react-router-dom";
 function Card({ data, type }) {
   return (
     <Wrapper>
       <div className="wrapper2">
-        <img src={data?.url} alt="" className="img" />
+        <Link to={"1"}>
+          <img src={data?.url} alt="" className="img" />
+        </Link>
         {type === "event" && (
           <div className="date">
             <div className="day">22 </div>
@@ -24,11 +26,14 @@ const Wrapper = styled.div`
     height: 30rem;
     border-radius: 1rem;
     position: relative;
+    /* cursor: pointer; */
   }
   .img {
     width: 100%;
     height: 100%;
     transition: all 0.25s linear;
+    /* cursor: pointer; */
+    /* cursor: default; */
     :hover {
       transform: scale(1.1);
     }

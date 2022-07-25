@@ -9,7 +9,7 @@ function ListView() {
           <div className="item">
             <img src={item.url} alt="" className="img" />
             <div className="info">
-              <div className="name">Alone</div>
+              <div className="name">{item.name}</div>
               <div className="time">2hrs 50 min</div>
               <div className="gener">Action | Adventure | Fantasy</div>
               <div className="date">Release Date : November 8 , 2020</div>
@@ -33,6 +33,7 @@ const Wrapper = styled.div`
   }
   .img {
     width: 15rem;
+    height: 22rem;
     margin-right: 2rem;
     border-radius: 1rem;
   }
