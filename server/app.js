@@ -7,6 +7,11 @@ const mongoSanitize = require("express-mongo-sanitize");
 const xss = require("xss-clean");
 const cookieParser = require("cookie-parser");
 
+const globalErrorHandler = require("./controllers/errorController");
+
+const userRoute = require("./routes/userRoute");
+const movieRoute = require("./routes/movieRoute");
+
 const app = express();
 
 app.use(cors());
@@ -34,5 +39,9 @@ app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 app.use(mongoSanitize());
 
 app.use(xss());
+
+app.use("/v1/user", userRoute);
+app.use("/v1/movie", movieRoute);
+app.use(globalErrorHandler);
 
 module.exports = app;
