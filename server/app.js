@@ -7,10 +7,12 @@ const mongoSanitize = require("express-mongo-sanitize");
 const xss = require("xss-clean");
 const cookieParser = require("cookie-parser");
 
-const globalErrorHandler = require("./controllers/errorController");
+const globalErrorHandler = require("./middleware/errorHandle");
 
 const userRoute = require("./routes/userRoute");
 const movieRoute = require("./routes/movieRoute");
+const reviewRoute = require("./routes/reviewRoute");
+const ticketRoute = require("./routes/ticketRoute");
 
 const app = express();
 
@@ -42,6 +44,9 @@ app.use(xss());
 
 app.use("/v1/user", userRoute);
 app.use("/v1/movie", movieRoute);
+app.use("/v1/review", reviewRoute);
+app.use("/v1/ticket", ticketRoute);
+
 app.use(globalErrorHandler);
 
 module.exports = app;

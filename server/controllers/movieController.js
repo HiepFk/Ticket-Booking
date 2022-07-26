@@ -1,5 +1,5 @@
-const Movie = require("../models/moviewModel");
-const catchAsync = require("./../utils/catchAsync");
+const Movie = require("../models/movieModel");
+const catchAsync = require("./../middleware/catchAsync");
 const AppError = require("./../utils/appError");
 const movieController = {
   addMovie: catchAsync(async (req, res, next) => {

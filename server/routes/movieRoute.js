@@ -1,12 +1,11 @@
 const movieController = require("../controllers/movieController");
-// const authController = require("../controllers/authController");
+const { isAuthenticatedUser, isAdmin } = require("../middleware/auth");
 const router = require("express").Router();
 
 router.route("/").get(movieController.getAllMovies);
 router.route("/:id").get(movieController.getMovie);
 
-// router.use(authController.protect);
-// router.use(authController.isAdmin);
+router.use(isAuthenticatedUser, isAdmin);
 
 router.route("/").post(movieController.addMovie);
 router
