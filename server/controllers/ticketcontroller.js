@@ -7,7 +7,6 @@ const ticketController = {
     let ticket =
       (await Ticket.findOne({ name: req.params.id })) ||
       (await Ticket.findById(req.params.id));
-    // user = await user.populate("reviews");
     if (!ticket) {
       return next(new AppError("No ticket found with that ID", 404));
     }
