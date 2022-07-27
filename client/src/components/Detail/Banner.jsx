@@ -1,39 +1,47 @@
 import React from "react";
-import img from "../../assets/movie/2.jpg";
-import img2 from "../../assets/movie/1.jpg";
+
 import styled from "styled-components";
 import { BsClock, BsTag, BsCalendarEvent } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
-function Banner() {
-  const genres = ["Action", "Adventure"];
+function Banner({ movie = {} }) {
   return (
     <Wrapper>
       <div
         className="wrapper"
         style={{
-          background: `url(${img}) no-repeat center center /cover`,
+          background: `url(${movie?.background}) no-repeat center center /cover`,
         }}
       >
         <div className="container">
           <div className="info">
-            <img src={img2} alt="" className="img" />
+            <img src={movie?.poster} alt="" className="img" />
             <div className="right">
-              <div className="name">John Wick</div>
+              <div className="name">{movie?.name}</div>
               <div className="desc_list">
                 <div className="desc_item">
                   <BsTag className="icon" />
-                  {genres?.map((item, index) => {
-                    return <span key={index}>{item} | </span>;
+                  {movie?.genre?.map((item, index) => {
+                    return (
+                      <span key={index}>
+                        {item}
+                        <span>
+                          {index < movie.genre?.length - 1 ? " | " : "   "}
+                        </span>
+                      </span>
+                    );
                   })}
                 </div>
                 <div className="desc_item">
                   <BsCalendarEvent className="icon" />
-                  <span>06 Dec, 2020</span>
+                  <span>
+                    {" "}
+                    {new Date(movie?.release_date).toLocaleString().slice(9)}
+                  </span>
                 </div>
                 <div className="desc_item">
                   <BsClock className="icon" />
-                  <span>2 hrs 50 mins</span>
+                  <span>{movie?.time}</span>
                 </div>
               </div>
               <Link to={"ticket"}>

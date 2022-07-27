@@ -1,9 +1,3 @@
-import m_1 from "../assets/movie/1.jpeg";
-import m_2 from "../assets/movie/2.webp";
-import m_3 from "../assets/movie/3.webp";
-import m_4 from "../assets/movie/4.webp";
-import m_5 from "../assets/movie/5.webp";
-
 import e_1 from "../assets/event/1.jpg";
 import e_2 from "../assets/event/2.jpg";
 import e_3 from "../assets/event/3.jpg";
@@ -34,34 +28,6 @@ import f_21 from "../assets/foods/21.png";
 import f_22 from "../assets/foods/22.png";
 import f_23 from "../assets/foods/23.png";
 import f_24 from "../assets/foods/24.jpeg";
-
-export const movies = [
-  {
-    id: 1,
-    url: m_1,
-    name: "1917",
-  },
-  {
-    id: 2,
-    url: m_2,
-    name: "Dune",
-  },
-  {
-    id: 3,
-    url: m_3,
-    name: "Top Gun : Maverick",
-  },
-  {
-    id: 4,
-    url: m_4,
-    name: "Joker",
-  },
-  {
-    id: 5,
-    url: m_5,
-    name: "Dunkirk",
-  },
-];
 
 export const events = [
   {

@@ -1,9 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import img from "../assets/login.jpg";
 import { FaFacebookF, FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { signUp } from "../apis/auth";
+
 function SignUp() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const user = useSelector((state) => state.auth?.user?.user);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
+
+  const handeSignup = (e) => {
+    e.preventDefault();
+    const user = {
+      email,
+      password,
+      passwordConfirm,
+    };
+    signUp(user, dispatch, navigate);
+  };
+
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [navigate, user]);
   return (
     <Wrapper
       className="item"
@@ -14,18 +39,28 @@ function SignUp() {
       <div className="wrapper">
         <div className="title">WELCOME</div>
         <div className="hi">TO FK ' CINEMA</div>
-        <form className="form">
+        <form className="form" onSubmit={handeSignup}>
           <div className="form_group">
             <label>
               Email <span>*</span>
             </label>
-            <input type="email" placeholder="Email your email" required />
+            <input
+              type="email"
+              placeholder="Email your email"
+              required
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
           <div className="form_group">
             <label>
               Password <span>*</span>
             </label>
-            <input type="password" placeholder="Email your password" required />
+            <input
+              type="password"
+              placeholder="Email your password"
+              required
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </div>
           <div className="form_group">
             <label>
@@ -35,10 +70,11 @@ function SignUp() {
               type="password"
               placeholder="Email your confirm password"
               required
+              onChange={(e) => setPasswordConfirm(e.target.value)}
             />
           </div>
 
-          <button>Sign Up</button>
+          <button type="submit">Sign Up</button>
         </form>
         <div className="sign">
           Already have an account?

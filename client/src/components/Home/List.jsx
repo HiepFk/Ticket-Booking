@@ -1,13 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Card from "../Card";
 import { SwiperSlide, Swiper } from "swiper/react";
 import SwiperCore, { Autoplay } from "swiper";
+import { banner } from "../../apis/home";
+import Loading from "../Loading";
 
 import "swiper/css";
 
 function List({ movies, type }) {
+  const [data, setData] = useState([""]);
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    banner(setData, setLoading);
+  }, []);
+
   SwiperCore.use([Autoplay]);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <Wrapper className="app">
@@ -19,10 +31,10 @@ function List({ movies, type }) {
         loop={true}
         autoplay={{ delay: 3000 }}
       >
-        {movies.map((item) => {
+        {data?.map((item) => {
           return (
             <SwiperSlide key={item.id}>
-              <Card data={item} key={item.id} type={type} />
+              <Card data={item} key={item.id} type={type} key={item.id} />
             </SwiperSlide>
           );
         })}

@@ -1,16 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import Loading from "../Loading";
 import { Link } from "react-router-dom";
-
+import { banner } from "../../apis/home";
 import SwiperCore, { Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { banner } from "../../utils/banner";
+// import { banner } from "../../utils/banner";
 
 import "swiper/css";
 
 function Banner() {
+  const [data, setData] = useState([""]);
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    banner(setData, setLoading);
+  }, []);
+
   SwiperCore.use([Autoplay]);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <Wrapper>
@@ -22,21 +33,22 @@ function Banner() {
         slidesPerView={1}
         autoplay={{ delay: 5000 }}
       >
-        {banner.map((item) => {
+        {data?.map((item) => {
           return (
             <SwiperSlide key={item.id}>
               <div
                 className="item"
                 style={{
-                  background: `url(${item?.banner}) no-repeat center center /cover`,
+                  background: `url(${item?.background}) no-repeat center center /cover`,
                 }}
+                key={item.id}
               >
                 <div className="container">
                   <div className="info">
-                    <img src={item?.main} alt="" className="img" />
+                    <img src={item?.poster} alt="" className="img" />
                     <div className="right">
                       <div className="name">{item?.name}</div>
-                      <div className="desc">{item?.desc}</div>
+                      <div className="desc">{item?.description}</div>
                       <div className="button">
                         <Link to={`/`} className="btn book">
                           Book now

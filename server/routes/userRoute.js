@@ -8,9 +8,9 @@ router.post("/signup", authController.signup);
 router.get("/logout", authController.logout);
 
 router.use(isAuthenticatedUser);
-// router.get("/me", userController.getMe);
-// router.patch("/updateMyPassword", authController.updatePassword);
-// router.patch("/updateInfo", userController.updateMe);
+router.get("/me", userController.getMe);
+router.patch("/updateMyPassword", authController.updatePassword);
+router.patch("/updateInfo", userController.updateMe);
 
 router.use(isAdmin);
 

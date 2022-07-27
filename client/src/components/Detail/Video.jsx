@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-function Video() {
+function Video({ video }) {
   return (
     <Wrapper className="app">
       <div className="title">
@@ -10,10 +10,9 @@ function Video() {
       </div>
       <div class="video-container">
         <iframe
-          // src={`https://www.youtube.com/embed/${item?.key}`}
-          src={`https://www.youtube.com/embed/EHWxGt-LckA`}
+          src={`https://www.youtube.com/embed/${video}`}
           width="100%"
-          // height="600"
+          height="100%"
           title="video"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

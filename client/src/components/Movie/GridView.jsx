@@ -1,14 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import Card from "../Card";
-import { movies } from "../../utils/data";
-function GridView() {
+function GridView({ movies = [""] }) {
   return (
     <Wrapper>
-      {movies.map((item) => {
-        return <Card data={item} key={item.id} />;
-      })}
-      {movies.map((item) => {
+      {movies?.map((item) => {
         return <Card data={item} key={item.id} />;
       })}
     </Wrapper>

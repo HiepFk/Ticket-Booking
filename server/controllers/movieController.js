@@ -40,7 +40,7 @@ const movieController = {
 
   getMovie: catchAsync(async (req, res, next) => {
     let movie =
-      (await Movie.findOne({ name: req.params.id })) ||
+      (await Movie.findOne({ slug: req.params.id })) ||
       (await Movie.findById(req.params.id));
     // user = await user.populate("reviews");
     if (!movie) {

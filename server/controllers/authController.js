@@ -3,40 +3,32 @@ const AppError = require("../utils/appError");
 const createSendToken = require("../utils/jwtToken");
 const User = require("./../models/userModel");
 
-exports.login = async (req, res, next) => {
-  try {
-    const { email, password } = req.body;
-    if (!email || !password) {
-      return next(new AppError("Please provide email and password!", 400));
-    }
-
-    const user = await User.findOne({ email }).select("+password");
-    if (!user) {
-      return next(new AppError("Incorrect email ", 401));
-    }
-
-    if (!(await user.correctPassword(password, user.password))) {
-      return next(new AppError("Incorrect password", 401));
-    }
-    createSendToken(user, 200, req, res, (msg = "Login success"));
-  } catch (error) {
-    res.status(404).json(error);
+exports.login = catchAsync(async (req, res, next) => {
+  const { email, password } = req.body;
+  if (!email || !password) {
+    return next(new AppError("Please provide email and password!", 400));
   }
-};
 
-exports.signup = async (req, res, next) => {
-  try {
-    const newUser = await User.create({
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password,
-      passwordConfirm: req.body.passwordConfirm,
-    });
-    createSendToken(newUser, 201, req, res, (msg = "SignUp success"));
-  } catch (error) {
-    res.status(404).json(error);
+  const user = await User.findOne({ email }).select("+password");
+  if (!user) {
+    return next(new AppError("Incorrect email ", 401));
   }
-};
+
+  if (!(await user.correctPassword(password, user.password))) {
+    return next(new AppError("Incorrect password", 401));
+  }
+  createSendToken(user, 200, req, res, (msg = "Login success"));
+});
+
+exports.signup = catchAsync(async (req, res, next) => {
+  const newUser = await User.create({
+    email: req.body.email,
+    name: "User",
+    password: req.body.password,
+    passwordConfirm: req.body.passwordConfirm,
+  });
+  createSendToken(newUser, 201, req, res, (msg = "SignUp success"));
+});
 
 exports.logout = (req, res, next) => {
   res.cookie("jwt", "loggedout", {

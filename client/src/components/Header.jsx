@@ -3,7 +3,11 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import img from "../assets/logo.png";
 import { links } from "../utils/link";
+import { useSelector, useDispatch } from "react-redux";
+import { logOutUser } from "../apis/auth";
 function Header() {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth?.user?.user);
   const [index, setIndex] = useState(1);
   const wrapperRef = useRef();
   useEffect(() => {
@@ -47,9 +51,15 @@ function Header() {
               );
             })}
           </div>
-          <Link to={`/login`} className="btn item">
-            Login
-          </Link>
+          {!user ? (
+            <Link to={`/login`} className="btn item">
+              Login
+            </Link>
+          ) : (
+            <div className="btn item" onClick={() => logOutUser(dispatch)}>
+              Log Out
+            </div>
+          )}
         </div>
       </div>
     </Wrapper>
@@ -105,6 +115,7 @@ const Wrapper = styled.div`
     );
     padding: 0.5rem 1.5rem;
     border-radius: 1rem;
+    cursor: pointer;
   }
   @media (max-width: 768px) {
     display: none;

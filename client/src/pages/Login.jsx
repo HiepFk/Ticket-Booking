@@ -1,10 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import img from "../assets/login.jpg";
 import { FaFacebookF, FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { loginUser } from "../apis/auth";
+import { useSelector, useDispatch } from "react-redux";
 
 function Login() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const user = useSelector((state) => state.auth?.user?.user);
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [navigate, user]);
+  const handeLogin = (e) => {
+    e.preventDefault();
+    const user = {
+      email,
+      password,
+    };
+    loginUser(user, dispatch, navigate);
+  };
+
   return (
     <Wrapper
       className="item"
@@ -15,20 +38,30 @@ function Login() {
       <div className="wrapper">
         <div className="title">Hello</div>
         <div className="hi">WELCOME BACK</div>
-        <form className="form">
+        <form className="form" onSubmit={handeLogin}>
           <div className="form_group">
             <label>
               Email <span>*</span>
             </label>
-            <input type="email" placeholder="Email your email" required />
+            <input
+              type="email"
+              placeholder="Email your email"
+              required
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
           <div className="form_group">
             <label>
               Password <span>*</span>
             </label>
-            <input type="password" placeholder="Email your password" required />
+            <input
+              type="password"
+              placeholder="Email your password"
+              required
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </div>
-          <button>Login</button>
+          <button type="submit">Login</button>
         </form>
         <div className="sign">
           Don't have an account?
