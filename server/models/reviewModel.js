@@ -58,12 +58,12 @@ reviewSchema.statics.calcAverageRatings = async function (movieId) {
   ]);
   console.log(stats);
   if (stats.length > 0) {
-    await Movie.findByIdAndUpdate(pmovied, {
+    await Movie.findByIdAndUpdate(movieId, {
       ratingsQuantity: stats[0].nRating,
       ratingsAverage: stats[0].avgRating,
     });
   } else {
-    await Movie.findByIdAndUpdate(productId, {
+    await Movie.findByIdAndUpdate(movieId, {
       ratingsQuantity: 0,
       ratingsAverage: 4.5,
     });

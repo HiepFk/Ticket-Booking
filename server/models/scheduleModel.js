@@ -1,20 +1,19 @@
 const mongoose = require("mongoose");
 
-const ticketSchema = new mongoose.Schema(
+const scheduleSchema = new mongoose.Schema(
   {
-    schedule: {
+    movie: {
       type: mongoose.Schema.ObjectId,
-      ref: "Schedule",
+      ref: "Movie",
       require: true,
     },
-    user: {
+    room: {
       type: mongoose.Schema.ObjectId,
-      ref: "User",
+      ref: "Room",
       require: true,
     },
-    seat: String,
-    // quantity: Number,
-    price: Number,
+    day: String,
+    time: String,
   },
   {
     toJSON: { virtuals: true },
@@ -23,6 +22,6 @@ const ticketSchema = new mongoose.Schema(
   }
 );
 
-const Ticket = mongoose.model("Ticket", ticketSchema);
+const Schedule = mongoose.model("Schedule", scheduleSchema);
 
-module.exports = Ticket;
+module.exports = Schedule;
