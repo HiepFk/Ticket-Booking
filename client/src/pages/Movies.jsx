@@ -1,13 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getAllMovie } from "../apis/movie";
+
 import styled from "styled-components";
+import Loading from "../components/Loading";
+
 import Sort from "../components/Movie/Sort";
 import Filter from "../components/Movie/Filter";
 import List from "../components/Movie/List";
 import Banner from "../components/Banner";
 import img from "../assets/movie/banner.jpg";
 function Movies() {
-  const [listView, setListView] = useState(false);
+  const dispatch = useDispatch();
+  const loading = useSelector((state) => state.movie?.loading);
 
+  const movies = useSelector((state) => state.movie?.movies?.movies);
+
+  useEffect(() => {
+    // clearFilter(dispatch);
+    getAllMovie(dispatch);
+  }, [dispatch]);
+
+  if (loading || !movies) {
+    return <Loading />;
+  }
   return (
     <Wrapper>
       <Banner img={img} title="Welcome" desc="GET MOVIE TICKETS" />
@@ -16,9 +32,9 @@ function Movies() {
           <Filter />
         </div>
         <div className="right">
-          <Sort listView={listView} setListView={setListView} />
-          <List listView={listView} />
-          <div className="btn">Load more</div>
+          <Sort />
+          <List movies={movies} />
+          {/* <div className="btn">Load more</div> */}
         </div>
       </div>
     </Wrapper>

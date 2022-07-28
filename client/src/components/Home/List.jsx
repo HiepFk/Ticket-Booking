@@ -34,7 +34,7 @@ function List({ movies, type }) {
         {data?.map((item) => {
           return (
             <SwiperSlide key={item.id}>
-              <Card data={item} key={item.id} type={type} key={item.id} />
+              <Card data={item} key={item.id} type={type} />
             </SwiperSlide>
           );
         })}
@@ -45,7 +45,7 @@ function List({ movies, type }) {
 const Wrapper = styled.div`
   width: 100%;
   .swiper-slide {
-    width: 30%;
+    width: 25%;
   }
   @media (max-width: 992px) {
     .swiper-slide {

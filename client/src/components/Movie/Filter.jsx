@@ -1,22 +1,42 @@
 import React from "react";
 import styled from "styled-components";
-import { classify, genre, experience } from "../../utils/data.js";
+import { useDispatch, useSelector } from "react-redux";
+import { updateFilter, clearFilter } from "../../apis/filter";
+import { classify_data, genre_data, experience } from "../../utils/data.js";
 function Filter() {
+  const dispatch = useDispatch();
+  const { text, classify } = useSelector((state) => state.filter.filters);
   return (
     <Wrapper>
-      <form action="" className="form">
+      <form className="form" onSubmit={(e) => e.preventDefault()}>
         <div className="filter">
           <p>Filter by</p>
-          <div className="btn_clear">Clear all</div>
+          <div className="btn_clear" onClick={() => clearFilter(dispatch)}>
+            Clear all
+          </div>
         </div>
-        <input type="text" className="search" placeholder="Name of movie" />
+        <input
+          type="text"
+          name="text"
+          // value={text}
+          className="search"
+          placeholder="Name of movie"
+          onChange={(e) => updateFilter(dispatch, e)}
+        />
         {/* classify */}
         <div className="form_group">
           <div className="title">Classify</div>
-          {classify.map((item) => {
+          {classify_data.map((item) => {
             return (
               <div className="item" key={item.id}>
-                <input type="checkbox" id={item.id} />
+                <input
+                  type="radio"
+                  name="classify"
+                  id={item.id}
+                  value={item.title}
+                  checked={item.title === classify}
+                  onClick={(e) => updateFilter(dispatch, e)}
+                />
                 <label htmlFor={item.id}>
                   <span></span> {item.title}
                 </label>
@@ -24,13 +44,19 @@ function Filter() {
             );
           })}
         </div>
-        {/* classify */}
+        {/* genre */}
         <div className="form_group">
           <div className="title">Genre</div>
-          {genre.map((item) => {
+          {genre_data.map((item) => {
             return (
               <div className="item" key={item.id}>
-                <input type="checkbox" id={item.id} />
+                <input
+                  type="checkbox"
+                  id={item.id}
+                  name="genre"
+                  value={item.title}
+                  onClick={(e) => updateFilter(dispatch, e)}
+                />
                 <label htmlFor={item.id}>
                   <span></span> {item.title}
                 </label>
@@ -39,7 +65,7 @@ function Filter() {
           })}
         </div>
         {/* classify */}
-        <div className="form_group">
+        {/* <div className="form_group">
           <div className="title">Experience</div>
           {experience.map((item) => {
             return (
@@ -51,7 +77,7 @@ function Filter() {
               </div>
             );
           })}
-        </div>
+        </div> */}
       </form>
     </Wrapper>
   );

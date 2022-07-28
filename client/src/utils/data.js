@@ -180,20 +180,24 @@ export const foods = [
   },
 ];
 
-export const classify = [
+export const classify_data = [
   { id: 1, title: "G" },
   { id: 2, title: "PG" },
-  { id: 3, title: "PG13" },
+  { id: 3, title: "PG-13" },
   { id: 4, title: "R" },
   { id: 5, title: "NC-17" },
 ];
-export const genre = [
-  { id: 6, title: "HORROR" },
-  { id: 7, title: "ROMANCE" },
-  { id: 8, title: "ACTION" },
-  { id: 9, title: "COMEDY" },
-  { id: 10, title: "ANIMATION" },
-  { id: 11, title: "SCI-FI" },
+export const genre_data = [
+  { id: 6, title: "Action" },
+  { id: 7, title: "Adventure" },
+  { id: 8, title: "Animation" },
+  { id: 9, title: "Comedy" },
+  { id: 10, title: "Crime" },
+  { id: 11, title: "Drama" },
+  { id: 12, title: "Horror" },
+  { id: 13, title: "Romance" },
+  { id: 14, title: "Thriller" },
+  { id: 15, title: "War" },
 ];
 export const experience = [
   { id: 12, title: "2D" },

@@ -1,32 +1,41 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import { updateSort, setListView, setGridView } from "../../apis/filter";
 import { BsFillGridFill } from "react-icons/bs";
 import { FaList } from "react-icons/fa";
 
-function Sort({ listView, setListView }) {
-  // const [listView, setListView] = useState(false);
+function Sort() {
+  const dispatch = useDispatch();
+  const listView = useSelector((state) => state.filter.listView);
+  const sort = useSelector((state) => state.filter.sort);
   return (
     <Wrapper>
       <div className="icons">
         <label htmlFor="sort">Sort view : </label>
         <div
           className={listView ? "icon" : "icon active"}
-          onClick={() => setListView(false)}
+          onClick={() => setGridView(dispatch)}
         >
           <BsFillGridFill />
         </div>
         <div
           className={!listView ? "icon" : "icon active"}
-          onClick={() => setListView(true)}
+          onClick={() => setListView(dispatch)}
         >
           <FaList />
         </div>
       </div>
       <form className="sort_form">
         <label htmlFor="sort">Sort by : </label>
-        <select name="sort" id="sort" className="sort_input">
+        <select
+          name="sort"
+          id="sort"
+          className="sort_input"
+          value={sort}
+          onChange={(e) => updateSort(dispatch, e.target.value)}
+        >
           <option value="trending">Trending</option>
-          {/* <option value="price-highest"></option> */}
           <option value="name-a">Name ( a-z )</option>
           <option value="name-z">Name ( z-a )</option>
         </select>

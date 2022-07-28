@@ -8,7 +8,6 @@ function ListView({ movies = [""] }) {
         return (
           <div className="item">
             <img src={item.poster} alt="" className="img" />
-
             <div className="info">
               <div className="name">{item.name}</div>
               <div className="time">{item.time}</div>
@@ -44,7 +43,6 @@ const Wrapper = styled.div`
     display: flex;
     margin-bottom: 2rem;
   }
-
   .img {
     width: 35rem;
     height: 22rem;

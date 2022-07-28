@@ -23,7 +23,7 @@ const Wrapper = styled.div`
   .wrapper2 {
     overflow: hidden;
     width: 100%;
-    height: 30rem;
+    height: 25rem;
     border-radius: 1rem;
     position: relative;
     /* cursor: pointer; */

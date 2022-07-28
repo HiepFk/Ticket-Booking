@@ -12,9 +12,9 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - 11rem);
+  height: calc(100vh - 20rem);
   img {
-    width: 20rem;
+    width: 30rem;
   }
 `;
 export default Error;

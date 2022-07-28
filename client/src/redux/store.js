@@ -2,7 +2,7 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import authReducer from "./authSlice";
 import movieReducer from "./movieSlice";
 import alertReducer from "./alertSlice";
-// import filterReducer from "./filterSlice";
+import filterReducer from "./filterSlice";
 import {
   persistStore,
   persistReducer,
@@ -24,6 +24,7 @@ const rootReducer = combineReducers({
   auth: authReducer,
   movie: movieReducer,
   alert: alertReducer,
+  filter: filterReducer,
 });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
