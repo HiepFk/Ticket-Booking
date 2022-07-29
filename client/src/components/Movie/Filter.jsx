@@ -5,7 +5,9 @@ import { updateFilter, clearFilter } from "../../apis/filter";
 import { classify_data, genre_data, experience } from "../../utils/data.js";
 function Filter() {
   const dispatch = useDispatch();
-  const { text, classify } = useSelector((state) => state.filter.filters);
+  const { text, classify, genre } = useSelector(
+    (state) => state.filter.filters
+  );
   return (
     <Wrapper>
       <form className="form" onSubmit={(e) => e.preventDefault()}>
@@ -55,6 +57,7 @@ function Filter() {
                   id={item.id}
                   name="genre"
                   value={item.title}
+                  checked={genre.includes(item.title)}
                   onClick={(e) => updateFilter(dispatch, e)}
                 />
                 <label htmlFor={item.id}>
@@ -105,6 +108,7 @@ const Wrapper = styled.div`
       color: #f1481f;
       font-size: 1rem;
       letter-spacing: 1px;
+      cursor: pointer;
     }
   }
   .search {

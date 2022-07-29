@@ -48,14 +48,12 @@ export const filterSlice = createSlice({
       }
     },
     FilteredMovie: (state) => {
-      const containsAll = (c, d) => {
+      const containsAll = (c, d) =>
         c.every((element) => {
           return d.includes(element);
         });
-      };
       const { all_movies } = current(state);
       const { text, classify, genre } = current(state.filters);
-      console.log(genre);
       let tempMovies = [...all_movies];
       if (text) {
         tempMovies = tempMovies.filter((movie) => {
@@ -68,12 +66,11 @@ export const filterSlice = createSlice({
           return item.classify === classify;
         });
       }
-      console.log(genre.length);
+
       if (genre.length > 0) {
+        // eslint-disable-next-line array-callback-return
         tempMovies = tempMovies.filter((item) => {
-          console.log(item);
           if (containsAll(genre, item.genre)) {
-            console.log(genre);
             return item;
           }
         });
@@ -106,8 +103,8 @@ export const filterSlice = createSlice({
         filters: {
           ...state.filters,
           text: "",
-          classify: [""],
-          genre: [""],
+          classify: "",
+          genre: [],
         },
       };
     },
