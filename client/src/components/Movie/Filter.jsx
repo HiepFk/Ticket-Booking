@@ -2,12 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { updateFilter, clearFilter } from "../../apis/filter";
-import { classify_data, genre_data, experience } from "../../utils/data.js";
+import { classify_data, genre_data } from "../../utils/data.js";
 function Filter() {
   const dispatch = useDispatch();
-  const { text, classify, genre } = useSelector(
-    (state) => state.filter.filters
-  );
+  const { classify, genre } = useSelector((state) => state.filter.filters);
   return (
     <Wrapper>
       <form className="form" onSubmit={(e) => e.preventDefault()}>
@@ -67,20 +65,6 @@ function Filter() {
             );
           })}
         </div>
-        {/* classify */}
-        {/* <div className="form_group">
-          <div className="title">Experience</div>
-          {experience.map((item) => {
-            return (
-              <div className="item" key={item.id}>
-                <input type="checkbox" id={item.id} />
-                <label htmlFor={item.id}>
-                  <span></span> {item.title}
-                </label>
-              </div>
-            );
-          })}
-        </div> */}
       </form>
     </Wrapper>
   );

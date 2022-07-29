@@ -50,10 +50,13 @@ function Banner() {
                       <div className="name">{item?.name}</div>
                       <div className="desc">{item?.description}</div>
                       <div className="button">
-                        <Link to={`/`} className="btn book">
+                        <Link
+                          to={`/movies/ticket/${item.slug}`}
+                          className="btn book"
+                        >
                           Book now
                         </Link>
-                        <Link to={`/`} className="btn check">
+                        <Link to={`/movies/${item.slug}`} className="btn check">
                           Check now
                         </Link>
                       </div>

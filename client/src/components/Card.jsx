@@ -5,7 +5,7 @@ function Card({ data, type }) {
   return (
     <Wrapper>
       <div className="wrapper2">
-        <Link to={`${data?.slug}`}>
+        <Link to={`/movies/${data?.slug}`}>
           <img src={data?.poster} alt="" className="img" />
         </Link>
         {type === "event" && (

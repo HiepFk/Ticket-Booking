@@ -1,15 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import screen from "../../assets/seat/screen.png";
-import one from "../../assets/seat/1.png";
-import two from "../../assets/seat/2.png";
-import { MdOutlineChair } from "react-icons/md";
 
 function Seat() {
+  const [selected, setSelected] = useState([]);
   const nameArr = ["A", "B", "C", "D", "E", "F", "G"];
-  const arr1 = [1, 2, 3, 4];
-  const arr2 = [5, 6, 7, 8, 9, 10];
-  const arr3 = [11, 12, 13, 14];
+  const arr1 = [1, 2, 3, 4, 5, 6];
+  const arr3 = [7, 8, 9, 10, 11, 12];
+
+  const handeSelected = (value) => {
+    if (selected.includes(value)) {
+      setSelected(
+        selected.filter((item) => {
+          return item !== value;
+        })
+      );
+    } else {
+      setSelected([...selected, value]);
+    }
+  };
+
   return (
     <Wrapper>
       <div className="title">
@@ -24,31 +34,46 @@ function Seat() {
           {nameArr.map((item) => {
             return (
               <div className="seat_line">
-                <span>{item}</span>
+                {/* <span>{item}</span> */}
                 <div className="seat_area">
                   <div className="right">
-                    {arr1.map((item) => {
+                    {arr1.map((item_mini) => {
                       return (
-                        <img src={one} alt="" className="img_seat" key={item} />
-                      );
-                    })}
-                  </div>
-                  <div className="center">
-                    {arr2.map((item) => {
-                      return (
-                        <img src={one} alt="" className="img_seat" key={item} />
+                        <div
+                          alt=""
+                          className={
+                            selected.includes(item + "" + item_mini)
+                              ? "img_seat selected"
+                              : "img_seat"
+                          }
+                          key={item + "" + item_mini}
+                          onClick={() => handeSelected(item + "" + item_mini)}
+                        >
+                          {item + "" + item_mini}
+                        </div>
                       );
                     })}
                   </div>
                   <div className="left">
-                    {arr3.map((item) => {
+                    {arr3.map((item_mini) => {
                       return (
-                        <img src={one} alt="" className="img_seat" key={item} />
+                        <div
+                          alt=""
+                          className={
+                            selected.includes(item + "" + item_mini)
+                              ? "img_seat selected"
+                              : "img_seat "
+                          }
+                          key={item + "" + item_mini}
+                          onClick={() => handeSelected(item + "" + item_mini)}
+                        >
+                          {item + "" + item_mini}
+                        </div>
                       );
                     })}
                   </div>
                 </div>
-                <span>{item}</span>
+                {/* <span>{item}</span> */}
               </div>
             );
           })}
@@ -86,11 +111,11 @@ const Wrapper = styled.div`
     margin-bottom: 2rem;
   }
   .seat_line {
-    width: 100%;
+    /* width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
+    align-items: center; */
+    margin-bottom: 2rem;
   }
   .seat_area {
     width: 100%;
@@ -98,14 +123,31 @@ const Wrapper = styled.div`
     justify-content: space-around;
   }
   .right,
-  .center,
   .left {
     display: flex;
-    justify-content: space-between;
   }
   .img_seat {
-    margin-left: 0.25rem;
-    margin-right: 0.25rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    background-color: #4e5155;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.25s linear;
+    :hover {
+      background-color: #31d7a9;
+    }
+  }
+  .active {
+    background-color: #e53637;
+    pointer-events: none;
+  }
+  .selected {
+    background-color: #31d7a9;
   }
 `;
 export default Seat;

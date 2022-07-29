@@ -1,7 +1,7 @@
 const Room = require("../models/roomModel");
 const catchAsync = require("./../middleware/catchAsync");
 const AppError = require("./../utils/appError");
-const cinemaController = {
+const roomController = {
   addRoom: catchAsync(async (req, res, next) => {
     const newRoom = new Room(req.body);
     const room = await newRoom.save();
@@ -23,7 +23,7 @@ const cinemaController = {
     res.status(200).json({
       status: "success",
       message: "Cập nhật thành công",
-      cinema,
+      room,
     });
   }),
 
@@ -64,4 +64,4 @@ const cinemaController = {
   }),
 };
 
-module.exports = cinemaController;
+module.exports = roomController;

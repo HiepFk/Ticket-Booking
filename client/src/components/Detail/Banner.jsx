@@ -44,7 +44,7 @@ function Banner({ movie = {} }) {
                   <span>{movie?.time}</span>
                 </div>
               </div>
-              <Link to={"ticket"}>
+              <Link to={`/movies/ticket/${movie.slug}`}>
                 <div className="btn">Buy ticket</div>
               </Link>
             </div>

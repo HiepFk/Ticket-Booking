@@ -1,7 +1,7 @@
 const Schedule = require("../models/scheduleModel");
 const catchAsync = require("./../middleware/catchAsync");
 const AppError = require("./../utils/appError");
-const cinemaController = {
+const scheduleController = {
   addSchedule: catchAsync(async (req, res, next) => {
     const newSchedule = new Schedule(req.body);
     const schedule = await newSchedule.save();
@@ -64,4 +64,4 @@ const cinemaController = {
   }),
 };
 
-module.exports = cinemaController;
+module.exports = scheduleController;

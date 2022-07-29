@@ -11,11 +11,14 @@ const globalErrorHandler = require("./middleware/errorHandle");
 
 const userRoute = require("./routes/userRoute");
 const movieRoute = require("./routes/movieRoute");
-const reviewRoute = require("./routes/reviewRoute");
-const ticketRoute = require("./routes/ticketRoute");
 const cinemaRoute = require("./routes/cinemaRoute");
 const roomRoute = require("./routes/roomRoute");
 const scheduleRoute = require("./routes/scheduleRoute");
+const foodRoute = require("./routes/foodRoute");
+const newsRoute = require("./routes/newsRoute");
+
+const ticketRoute = require("./routes/ticketRoute");
+const reviewRoute = require("./routes/reviewRoute");
 
 const app = express();
 
@@ -55,12 +58,14 @@ app.use(xss());
 
 app.use("/v1/user", userRoute);
 app.use("/v1/movie", movieRoute);
-app.use("/v1/review", reviewRoute);
-app.use("/v1/ticket", ticketRoute);
 app.use("/v1/cinema", cinemaRoute);
 app.use("/v1/room", roomRoute);
 app.use("/v1/schedule", scheduleRoute);
+app.use("/v1/food", foodRoute);
+app.use("/v1/news", newsRoute);
 
+app.use("/v1/ticket", ticketRoute);
+app.use("/v1/review", reviewRoute);
 app.use(globalErrorHandler);
 
 module.exports = app;
