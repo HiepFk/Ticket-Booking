@@ -4,8 +4,10 @@ import styled from "styled-components";
 function FoodCard({ data }) {
   return (
     <Wrapper>
-      <img src={data.url} alt="" className="img" />
-      <div className="name_food">{data.name}</div>
+      <div className="price">{data?.price}$</div>
+      <div className="priceDiscount">{data?.priceDiscount}%</div>
+      <img src={data?.img} alt="" className="img" />
+      <div className="name_food">{data?.name}</div>
     </Wrapper>
   );
 }
@@ -22,24 +24,22 @@ const Wrapper = styled.div`
     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   padding: 1rem;
-  :before {
-    content: "$57";
+  .price {
     position: absolute;
     top: 0;
     left: 0;
-    font-size: 1.25rem;
+    font-size: 1rem;
     color: white;
     font-weight: bold;
     background: #31d7a9;
-    min-width: 3rem;
-    min-height: 4rem;
+    min-width: 4rem;
+    min-height: 5rem;
     display: flex;
     justify-content: center;
     align-items: center;
     clip-path: polygon(50% 0%, 100% 0, 100% 100%, 50% 75%, 0 100%, 0 0);
   }
-  :after {
-    content: "24%";
+  .priceDiscount {
     position: absolute;
     top: 1rem;
     right: 1rem;

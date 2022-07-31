@@ -6,7 +6,7 @@ const foodSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, "A movie must have a name"],
+      required: [true, "A food must have a name"],
       unique: true,
       trim: true,
     },
@@ -18,7 +18,7 @@ const foodSchema = new mongoose.Schema(
     },
     priceDiscount: {
       type: Number,
-      default: 0,
+      default: 5,
     },
   },
 
