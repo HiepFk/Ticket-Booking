@@ -7,30 +7,26 @@ const mongoSanitize = require("express-mongo-sanitize");
 const xss = require("xss-clean");
 const cookieParser = require("cookie-parser");
 
-const globalErrorHandler = require("./middleware/errorHandle");
+const globalErrorHandler = require("./src/middleware/errorHandle");
 
-const userRoute = require("./routes/userRoute");
-const movieRoute = require("./routes/movieRoute");
-const cinemaRoute = require("./routes/cinemaRoute");
-const roomRoute = require("./routes/roomRoute");
-const scheduleRoute = require("./routes/scheduleRoute");
-const foodRoute = require("./routes/foodRoute");
-const newsRoute = require("./routes/newsRoute");
+const userRoute = require("./src/routes/userRoute");
+const movieRoute = require("./src/routes/movieRoute");
+const cinemaRoute = require("./src/routes/cinemaRoute");
+const roomRoute = require("./src/routes/roomRoute");
+const scheduleRoute = require("./src/routes/scheduleRoute");
+const foodRoute = require("./src/routes/foodRoute");
+const newsRoute = require("./src/routes/newsRoute");
 
-const ticketRoute = require("./routes/ticketRoute");
-const reviewRoute = require("./routes/reviewRoute");
+const ticketRoute = require("./src/routes/ticketRoute");
+const reviewRoute = require("./src/routes/reviewRoute");
+
+const corsOptions = require("./src/config/corsOptions");
+const credentials = require("./src/middleware/credentials");
 
 const app = express();
 
-const corsOptions = {
-  origin: [process.env.REACT_CLIENT_URL, process.env.REACT_ADMIN_URL],
-  credentials: true, //included credentials as true
-};
+app.use(credentials);
 app.use(cors(corsOptions));
-
-app.options("/*", (_, res) => {
-  res.sendStatus(200);
-});
 
 app.use(cookieParser());
 
@@ -66,6 +62,11 @@ app.use("/v1/news", newsRoute);
 
 app.use("/v1/ticket", ticketRoute);
 app.use("/v1/review", reviewRoute);
+
+app.all("*", (req, res, next) => {
+  next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
+});
+
 app.use(globalErrorHandler);
 
 module.exports = app;
