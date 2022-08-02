@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { IoIosArrowUp } from "react-icons/io";
-import img from "../assets/footer.jpg";
+import img from "../assets/banner/footer.jpg";
 import logo from "../assets/logo.png";
 import { socials } from "../utils/social";
 function Footer() {

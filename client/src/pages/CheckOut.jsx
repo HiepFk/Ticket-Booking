@@ -2,6 +2,7 @@ import React from "react";
 import Detail from "../components/CheckOut/Detail";
 import Payment from "../components/CheckOut/Payment";
 import styled from "styled-components";
+
 function CheckOut() {
   return (
     <Wrapper className="app">

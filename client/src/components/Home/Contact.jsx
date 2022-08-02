@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import img from "../../assets/contact.jpg";
+import img from "../../assets/banner/contact.jpg";
 function Contact() {
   return (
     <Wrapper

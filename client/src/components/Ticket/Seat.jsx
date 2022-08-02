@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import screen from "../../assets/seat/screen.png";
+import screen from "../../assets/screen.png";
 import { Link } from "react-router-dom";
 function Seat() {
   const [selected, setSelected] = useState([]);

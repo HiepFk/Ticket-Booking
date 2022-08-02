@@ -2,7 +2,7 @@ import React from "react";
 import { init } from "ityped";
 import { useEffect, useRef } from "react";
 import styled from "styled-components";
-import img from "../../assets/cinema.jpg";
+import img from "../../assets/banner/cinema.jpg";
 function Service() {
   const textRef = useRef();
 

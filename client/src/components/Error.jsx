@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - 20rem);
+  height: calc(100vh - 15rem);
   img {
     width: 30rem;
   }

@@ -57,7 +57,7 @@ function Banner({ movie = {} }) {
 const Wrapper = styled.div`
   margin-bottom: 2rem;
   .wrapper {
-    height: 85vh;
+    height: 100vh;
   }
   .container {
     position: absolute;
@@ -66,14 +66,14 @@ const Wrapper = styled.div`
     bottom: 0;
     left: 0;
     background-color: rgba(7, 24, 34, 0.6);
-    height: 85vh;
+    height: 100vh;
   }
   .info {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0 1rem;
-    padding-top: calc(42.5vh - 15rem);
+    padding-top: calc(50vh - 12.5rem);
     z-index: 99;
     margin: 0 auto;
     color: white;

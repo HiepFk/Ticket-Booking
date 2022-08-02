@@ -9,7 +9,7 @@ import Sort from "../components/Movie/Sort";
 import Filter from "../components/Movie/Filter";
 import List from "../components/Movie/List";
 import Banner from "../components/Banner";
-import img from "../assets/movie/banner.jpg";
+import img from "../assets/banner/movie.jpg";
 function Movies() {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.movie?.loading);
