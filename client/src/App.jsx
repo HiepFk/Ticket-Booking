@@ -1,6 +1,16 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { Home, Login, Signup, Movies, Movie, Ticket, Food } from "./pages";
+import {
+  Home,
+  Login,
+  Signup,
+  Movies,
+  Movie,
+  Ticket,
+  Food,
+  CheckOut,
+  Me,
+} from "./pages";
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -18,6 +28,8 @@ function App() {
         <Route exact path="movies/:id" element={<Movie />} />
         <Route exact path="movies/ticket/:id" element={<Ticket />} />
         <Route exact path="food" element={<Food />} />
+        <Route exact path="checkout" element={<CheckOut />} />
+        <Route exact path="me" element={<Me />} />
         <Route path="*" element={<Error />} />
       </Routes>
       <Footer />

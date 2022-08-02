@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import screen from "../../assets/seat/screen.png";
-
+import { Link } from "react-router-dom";
 function Seat() {
   const [selected, setSelected] = useState([]);
   const nameArr = ["A", "B", "C", "D", "E", "F", "G"];
@@ -79,11 +79,18 @@ function Seat() {
           })}
         </div>
       </div>
+      <Link to={"/checkout"}>
+        <div className="btn">Check Out</div>
+      </Link>
     </Wrapper>
   );
 }
 const Wrapper = styled.div`
   margin-bottom: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   .title {
     display: flex;
     width: 100%;
@@ -137,7 +144,7 @@ const Wrapper = styled.div`
     justify-content: center;
     border-radius: 0.5rem;
     cursor: pointer;
-    transition: all 0.25s linear;
+    transition: all 0.15s linear;
     :hover {
       background-color: #31d7a9;
     }
@@ -148,6 +155,23 @@ const Wrapper = styled.div`
   }
   .selected {
     background-color: #31d7a9;
+  }
+  .btn {
+    margin-top: 2rem;
+    background-image: -webkit-linear-gradient(
+      169deg,
+      #5560ff 17%,
+      #aa52a1 63%,
+      #ff4343 100%
+    );
+    padding: 0.5rem 0rem;
+    border-radius: 1rem;
+    font-weight: bold;
+    font-size: 1rem;
+    text-transform: uppercase;
+    width: 7rem;
+    text-align: center;
+    color: white;
   }
 `;
 export default Seat;

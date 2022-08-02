@@ -5,7 +5,7 @@ export const filterSlice = createSlice({
   initialState: {
     all_movies: [],
     filtered_movies: [],
-    sort: "name-a",
+    sort: "trending",
     filters: {
       text: "",
       classify: "",

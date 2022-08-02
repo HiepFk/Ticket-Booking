@@ -21,30 +21,34 @@ function Footer() {
       <div className="top" onClick={Top}>
         <IoIosArrowUp className="icon" />
       </div>
-      <div className="wrapper">
-        <img src={logo} alt="" className="img_logo" />
-        <div className="about">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, atque
-          suscipit? Id, ullam quisquam, ipsam ipsa natus adipisci nisi
-          laudantium aspernatur ad itaque iure vel quibusdam reprehenderit magni
-          recusandae odit.
+      <div className="wrapper app">
+        <div className="left">
+          <img src={logo} alt="" className="img_logo" />
+          <div className="about">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit
+            inventore labore, quo quam fugiat explicabo qui, culpa assumenda
+            eius rerum voluptatum facere hic dignissimos sit laborum saepe illo
+            consectetur natus.
+          </div>
         </div>
-        {/* <hr /> */}
-        <div className="socials">
-          {socials.map((item) => {
-            return (
-              <a className="social_item" key={item.id} href={item.url}>
-                <img src={item?.img} alt="" className="social_img" />
-              </a>
-            );
-          })}
-        </div>
-        <div className="footer">
-          <h5 style={{ marginBottom: "0.25rem" }}>
-            &copy;{new Date().getFullYear()}
-            <span> HiepFK </span>
-          </h5>
-          <h5>All rights reserved</h5>
+
+        <div className="right">
+          <div className="socials">
+            {socials.map((item) => {
+              return (
+                <a className="social_item" key={item.id} href={item.url}>
+                  <img src={item?.img} alt="" className="social_img" />
+                </a>
+              );
+            })}
+          </div>
+          <div className="footer">
+            <h5 style={{ marginBottom: "0.25rem" }}>
+              &copy;{new Date().getFullYear()}
+              <span> HiepFK </span>
+            </h5>
+            <h5>All rights reserved</h5>
+          </div>
         </div>
       </div>
     </Wrapper>
@@ -53,7 +57,7 @@ function Footer() {
 const Wrapper = styled.div`
   position: relative;
   width: 100%;
-  height: 20rem;
+  min-height: 15rem;
   .top {
     position: absolute;
     top: -1.5rem;
@@ -66,27 +70,31 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    z-index: 99;
+    :hover {
+      .icon {
+        transform: translateY(-5px);
+      }
+    }
   }
   .icon {
     color: white;
     font-size: 1.5rem;
+    transition: all 0.25s linear;
+  }
+  .about {
+    max-width: 20rem;
   }
   .wrapper {
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    justify-content: space-between;
     padding-top: 3rem;
   }
   .img_logo {
     width: 15rem;
   }
-  .about {
-    color: white;
-    max-width: 35rem;
-    letter-spacing: 1px;
-    padding: 0 1rem;
-  }
+
   .socials {
     display: flex;
     align-items: center;
@@ -104,10 +112,11 @@ const Wrapper = styled.div`
     margin-top: 1rem;
     color: white;
     text-align: center;
-    font-size: 1rem;
+    font-size: 1.25rem;
   }
   span {
     color: #e53637;
+    font-size: 1.25rem;
   }
 `;
 export default Footer;

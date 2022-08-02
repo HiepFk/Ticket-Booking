@@ -50,6 +50,11 @@ function Header() {
                 </Link>
               );
             })}
+            {user && (
+              <Link to={`/me`} className="menu_item item">
+                Me
+              </Link>
+            )}
           </div>
           {!user ? (
             <Link to={`/login`} className="btn item">

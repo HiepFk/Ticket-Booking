@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 function Schedule() {
-  const time = [
+  const [time, setTime] = useState("");
+  const [room, setRoom] = useState("");
+
+  const times = [
     "9:30",
     "10:45",
     "12:00",
@@ -17,7 +20,7 @@ function Schedule() {
     "22:15",
     "23:00",
   ];
-  const room = ["01", "02", "03", "04", "05", "06"];
+  const rooms = ["01", "02", "03", "04", "05", "06"];
   return (
     <Wrapper>
       <div className="title">
@@ -25,9 +28,13 @@ function Schedule() {
         <div className="desc">Chọn phòng :</div>
       </div>
       <div className="dates">
-        {room.map((item, index) => {
+        {rooms.map((item, index) => {
           return (
-            <div className="date" key={index}>
+            <div
+              className={item === room ? "date active" : "date"}
+              key={index}
+              onClick={() => setRoom(item)}
+            >
               {item}
             </div>
           );
@@ -38,9 +45,13 @@ function Schedule() {
         <div className="desc">Thời gian chiếu :</div>
       </div>
       <div className="dates">
-        {time.map((item, index) => {
+        {times.map((item, index) => {
           return (
-            <div className="date" key={index}>
+            <div
+              className={item === time ? "date active" : "date"}
+              key={index}
+              onClick={() => setTime(item)}
+            >
               {item}
             </div>
           );
@@ -79,11 +90,14 @@ const Wrapper = styled.div`
     background-color: #212121;
     text-align: center;
     border-radius: 0.5rem;
-    transition: all 0.25s linear;
+    transition: all 0.15s linear;
     cursor: pointer;
     :hover {
       background-color: #31d7a9;
     }
+  }
+  .active {
+    background-color: #31d7a9;
   }
 `;
 
