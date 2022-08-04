@@ -1,7 +1,7 @@
 const nodemailer = require("nodemailer");
 
-const adminEmail = "hiepnh.fk@gmail.com";
-const adminPassword = "bakyjfafmzukhjsh";
+const adminEmail = process.env.ADMIN_EMAIL;
+const adminPassword = process.env.ADMIN_PASSWORD;
 
 const configEmail = async (to, subject, html) => {
   const transporter = nodemailer.createTransport({
