@@ -51,5 +51,5 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
   user.passwordConfirm = req.body.passwordConfirm;
   await user.save();
 
-  createSendToken(user, 200, req, res, (msg = "Cập nhật mật khẩu thành công"));
+  createSendToken(user, 200, req, res, (msg = "Update password success"));
 });

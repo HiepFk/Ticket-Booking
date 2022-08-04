@@ -1,7 +1,10 @@
 const userController = require("../controllers/userController");
 const authController = require("../controllers/authController");
+const emailController = require("../controllers/emailController");
 const { isAuthenticatedUser, isAdmin } = require("../middleware/auth");
 const router = require("express").Router();
+
+router.post("/send-email", emailController.SendMail);
 
 router.post("/login", authController.login);
 router.post("/signup", authController.signup);
