@@ -6,7 +6,7 @@ export const getAllFoods = async (setData, setLoading) => {
   setLoading(true);
   try {
     const res = await axios.get(link);
-    setData(res?.data?.foods);
+    setData(res?.data?.data);
     setLoading(false);
   } catch (error) {
     setLoading(false);

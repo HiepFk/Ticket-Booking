@@ -55,7 +55,7 @@ function Filter() {
                   id={item.id}
                   name="genre"
                   value={item.title}
-                  checked={genre.includes(item.title)}
+                  checked={genre?.includes(item.title)}
                   onClick={(e) => updateFilter(dispatch, e)}
                 />
                 <label htmlFor={item.id}>

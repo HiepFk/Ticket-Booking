@@ -4,7 +4,7 @@ import Service from "../components/Home/Service";
 import List from "../components/Home/List";
 import Contact from "../components/Home/Contact";
 import Title from "../components/Title";
-import { events } from "../utils/data";
+// import { events } from "../utils/data";
 function Home() {
   return (
     <>

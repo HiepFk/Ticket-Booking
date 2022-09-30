@@ -6,7 +6,7 @@ export const banner = async (setData, setLoading) => {
   setLoading(true);
   try {
     const res = await axios.get(link);
-    setData(res?.data?.movies?.slice(0, 5));
+    setData(res?.data?.data?.slice(0, 5));
     setLoading(false);
   } catch (error) {
     setLoading(false);

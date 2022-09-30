@@ -14,7 +14,7 @@ function Movies() {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.movie?.loading);
 
-  const movies = useSelector((state) => state.movie?.movies?.movies);
+  const movies = useSelector((state) => state.movie?.movies?.data);
 
   useEffect(() => {
     // clearFilter(dispatch);

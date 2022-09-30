@@ -67,7 +67,7 @@ export const filterSlice = createSlice({
         });
       }
 
-      if (genre.length > 0) {
+      if (genre?.length > 0) {
         // eslint-disable-next-line array-callback-return
         tempMovies = tempMovies.filter((item) => {
           if (containsAll(genre, item.genre)) {

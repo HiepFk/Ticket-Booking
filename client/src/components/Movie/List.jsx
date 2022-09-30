@@ -23,9 +23,10 @@ function List({ movies }) {
     sortMovie(dispatch);
   }, [dispatch, sort, text, classify, genre]);
 
-  if (FilterMovies.length === 0) {
+  if (FilterMovies?.length === 0) {
     return <NoProduct>Sorry , no movies can't be found 😥</NoProduct>;
   }
+  console.log(FilterMovies);
   return (
     <Wrapper>
       {listView ? (

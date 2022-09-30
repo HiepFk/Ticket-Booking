@@ -12,7 +12,7 @@ function ListView({ movies = [""] }) {
               <div className="name">{item.name}</div>
               <div className="time">{item.time}</div>
               <div className="gener">
-                {item?.genre.map((item_mini, index) => {
+                {item?.genre?.map((item_mini, index) => {
                   return (
                     <span key={index}>
                       {item_mini}

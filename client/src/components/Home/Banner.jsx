@@ -23,6 +23,8 @@ function Banner() {
     return <Loading />;
   }
 
+  console.log(data);
+
   return (
     <Wrapper>
       <Swiper
@@ -99,6 +101,7 @@ const Wrapper = styled.div`
   }
   .img {
     width: 20rem;
+    border-radius: 1rem;
   }
   .right {
     margin-left: 5rem;

@@ -5,7 +5,7 @@ const router = require("express").Router();
 router.route("/").get(movieController.getListMovie);
 router.route("/:id").get(movieController.getMovie);
 
-router.use(isAuthenticatedUser, isAdmin);
+// router.use(isAuthenticatedUser, isAdmin);
 
 router.route("/").post(movieController.createMovie);
 router

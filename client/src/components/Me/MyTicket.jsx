@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/scope */
 import React from "react";
 import styled from "styled-components";
 function MyTicket() {

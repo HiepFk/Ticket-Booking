@@ -32,8 +32,7 @@ const Wrapper = styled.div`
     width: 100%;
     height: 100%;
     transition: all 0.25s linear;
-    /* cursor: pointer; */
-    /* cursor: default; */
+    /* border-radius: 1rem; */
     :hover {
       transform: scale(1.1);
     }
