@@ -4,7 +4,10 @@ const router = require("express").Router();
 
 router.use(isAuthenticatedUser, isAdmin);
 
-router.route("/").get(roomController.getAllRooms).post(roomController.addRoom);
+router
+  .route("/")
+  .get(roomController.getListRoom)
+  .post(roomController.createRoom);
 
 router
   .route("/:id")

@@ -6,8 +6,8 @@ router.use(isAuthenticatedUser, isAdmin);
 
 router
   .route("/")
-  .get(cinemaController.getAllCinemas)
-  .post(cinemaController.addCinema);
+  .get(cinemaController.getListCinema)
+  .post(cinemaController.createCinema);
 
 router
   .route("/:id")

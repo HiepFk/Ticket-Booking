@@ -10,7 +10,7 @@ router.route("/user/my").get(ticketController.userGetMyTicket);
 
 router.use(isAdmin);
 
-router.route("/").get(ticketController.getAllTickets);
+router.route("/").get(ticketController.getListTicket);
 router.route("/id").get(ticketController.getTicket);
 
 module.exports = router;

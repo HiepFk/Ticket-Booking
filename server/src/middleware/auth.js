@@ -46,26 +46,3 @@ exports.isAuthenticatedUser = catchAsync(async (req, res, next) => {
   req.user = currentUser;
   next();
 });
-
-exports.isLoggedIn = async (req, res, next) => {
-  if (req.cookies.jwt) {
-    try {
-      const decoded = await promisify(jwt.verify)(
-        req.cookies.jwt,
-        process.env.JWT_SECRET
-      );
-      const currentUser = await User.findById(decoded.id);
-      if (!currentUser) {
-        return next();
-      }
-      if (currentUser.changesPasswordAfter(decoded.iat)) {
-        return next();
-      }
-      req.user = currentUser;
-      return next();
-    } catch (err) {
-      return next();
-    }
-  }
-  next();
-};

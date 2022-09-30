@@ -18,7 +18,7 @@ const foodSchema = new mongoose.Schema(
     },
     priceDiscount: {
       type: Number,
-      default: 5,
+      default: 10,
     },
   },
 

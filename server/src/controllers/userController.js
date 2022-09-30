@@ -1,4 +1,6 @@
 const User = require("../models/userModel");
+const factory = require("./handlerFactory");
+
 const catchAsync = require("./../middleware/catchAsync");
 const AppError = require("./../utils/appError");
 
@@ -13,66 +15,17 @@ const filterObj = (obj, ...notallowed) => {
 };
 
 const userController = {
-  addUser: catchAsync(async (req, res, next) => {
-    const newUser = new User(req.body);
-    const user = await newUser.save();
-    res.status(201).json({
-      status: "success",
-      message: "Thêm người dùng thành công",
-      user,
-    });
-  }),
+  getListUser: factory.getAll(User),
 
-  updateUser: catchAsync(async (req, res, next) => {
-    const user = await User.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true,
-    });
-    if (!user) {
-      return next(new AppError("No user found with that ID", 404));
-    }
-    res.status(200).json({
-      status: "success",
-      message: "Cập nhật thành công",
-      user,
-    });
-  }),
+  getUser: factory.getOne(User),
 
-  getAllUsers: catchAsync(async (req, res, next) => {
-    const queryObj = { ...req.query };
-    const query = User.find(queryObj);
-    const users = await query;
-    res.status(200).json({
-      status: "success",
-      results: users.length,
-      users,
-    });
-  }),
+  createUser: factory.createOne(User),
 
-  getUser: catchAsync(async (req, res, next) => {
-    let user =
-      (await User.findOne({ name: req.params.id })) ||
-      (await User.findById(req.params.id));
-    // user = await user.populate("reviews");
-    if (!user) {
-      return next(new AppError("No user found with that ID", 404));
-    }
-    res.status(200).json({
-      status: "success",
-      user,
-    });
-  }),
+  updateUser: factory.updateOne(User),
 
-  deleteUser: catchAsync(async (req, res, next) => {
-    const doc = await User.findByIdAndDelete(req.params.id);
-    if (!doc) {
-      return next(new AppError("No user found with that ID", 404));
-    }
-    res.status(200).json({
-      status: "success",
-      message: "Xóa thành công",
-    });
-  }),
+  deleteUser: factory.deleteOne(User),
+
+  // Phần của user
 
   updateMe: catchAsync(async (req, res, next) => {
     if (req.body.password || req.body.passwordConfirm || req.body.role) {
@@ -88,18 +41,24 @@ const userController = {
       new: true,
       runValidators: true,
     });
+    token = req.headers.token?.split(" ")?.[1];
+    const { password, ...others } = user._doc;
     res.status(200).json({
+      ...others,
+      accessToken: token,
       status: "success",
       message: "Cập nhật thành công",
-      user,
     });
   }),
 
   getMe: catchAsync(async (req, res, next) => {
     const user = await User.findById(req.user.id);
+    token = req.headers.token?.split(" ")?.[1];
+    const { password, ...others } = user._doc;
     res.status(200).json({
+      ...others,
+      accessToken,
       status: "success",
-      user,
     });
   }),
 };

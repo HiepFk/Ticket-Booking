@@ -43,25 +43,25 @@ const limiter = rateLimit({
   windowMs: 60 * 60 * 1000,
   message: "Too many requests from this IP, please try again in an hour.",
 });
-app.use("/", limiter);
+app.use("/api", limiter);
 
-app.use(express.json({ limit: "50mb" }));
-app.use(express.urlencoded({ extended: true, limit: "50mb" }));
+app.use(express.json({ limit: "1mb" }));
+app.use(express.urlencoded({ extended: true, limit: "1mb" }));
 
 app.use(mongoSanitize());
 
 app.use(xss());
 
-app.use("/v1/user", userRoute);
-app.use("/v1/movie", movieRoute);
-app.use("/v1/cinema", cinemaRoute);
-app.use("/v1/room", roomRoute);
-app.use("/v1/schedule", scheduleRoute);
-app.use("/v1/food", foodRoute);
-app.use("/v1/news", newsRoute);
+app.use("/api/v1/user", userRoute);
+app.use("/api/v1/movie", movieRoute);
+app.use("/api/v1/cinema", cinemaRoute);
+app.use("/api/v1/room", roomRoute);
+app.use("/api/v1/schedule", scheduleRoute);
+app.use("/api/v1/food", foodRoute);
+app.use("/api/v1/news", newsRoute);
 
-app.use("/v1/ticket", ticketRoute);
-app.use("/v1/review", reviewRoute);
+app.use("/api/v1/ticket", ticketRoute);
+app.use("/api/v1/review", reviewRoute);
 
 app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));

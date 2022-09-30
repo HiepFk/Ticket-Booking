@@ -1,37 +1,29 @@
 const mongoose = require("mongoose");
-const validator = require("validator");
 const bcrypt = require("bcryptjs");
 
 const userSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, "Please tell us your name"],
     },
     email: {
       type: String,
       required: [true, "Please tell us your email"],
       unique: true,
       lowcase: true,
-      validate: [validator.isEmail, "Please provide a valid email"],
     },
-    number: {
-      type: String,
-      default: "0123456789",
-    },
+    number: String,
     isAdmin: {
       type: Boolean,
       default: false,
     },
     password: {
       type: String,
-      required: [true, "Please tell us your password"],
       minLength: 8,
       select: false,
     },
     passwordConfirm: {
       type: String,
-      required: [true, "Please tell us your password confrim"],
       validate: {
         validator: function (el) {
           return el === this.password;
@@ -75,7 +67,6 @@ userSchema.methods.changesPasswordAfter = function (JWTTimestamp) {
   return false;
 };
 
-// Kiểm tra mật khẩu
 userSchema.methods.correctPassword = async function (
   candidatePassword,
   userPassword

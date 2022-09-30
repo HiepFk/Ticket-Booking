@@ -33,14 +33,8 @@ const movieSchema = new mongoose.Schema(
       required: [true, "A movie must have a genre"],
     },
 
-    background: {
-      type: String,
-      // required: [true, "A movie must have a cover image"],
-    },
-    poster: {
-      type: [String],
-      // required: [true, "A movie must have a cover image"],
-    },
+    background: String,
+    poster: String,
     video: {
       type: String,
       default: "EHWxGt-LckA",

@@ -6,8 +6,8 @@ router.use(isAuthenticatedUser, isAdmin);
 
 router
   .route("/")
-  .get(scheduleController.getAllSchedules)
-  .post(scheduleController.addSchedule);
+  .get(scheduleController.getListSchedule)
+  .post(scheduleController.createSchedule);
 
 router
   .route("/:id")

@@ -1,27 +1,16 @@
 const Review = require("../models/reviewModel");
 const catchAsync = require("./../middleware/catchAsync");
-const AppError = require("./../utils/appError");
+const factory = require("./handlerFactory");
 const reviewController = {
-  addReview: catchAsync(async (req, res, next) => {
-    const newReview = new Review(req.body);
-    const review = await newReview.save();
-    res.status(201).json({
-      status: "success",
-      message: "Đánh giá thành công",
-      review,
-    });
-  }),
+  getListReview: factory.getAll(Review),
 
-  getAllReviews: catchAsync(async (req, res, next) => {
-    const queryObj = { ...req.query };
-    const query = Review.find(queryObj);
-    const reviews = await query;
-    res.status(200).json({
-      status: "success",
-      results: reviews.length,
-      reviews,
-    });
-  }),
+  getReview: factory.getOne(Review),
+
+  createReview: factory.createOne(Review),
+
+  updateReview: factory.updateOne(Review),
+
+  deleteReview: factory.deleteOne(Review),
 
   // Phần user
   userAddReview: catchAsync(async (req, res, next) => {
