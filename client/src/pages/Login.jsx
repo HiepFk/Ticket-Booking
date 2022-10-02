@@ -70,6 +70,7 @@ function Login() {
             <span>Sign up now</span>
           </Link>
         </div>
+
         <div className="or">
           <hr />
           <span>Or</span>
@@ -85,6 +86,13 @@ function Login() {
           >
             <FaGoogle />
           </div>
+        </div>
+
+        <div className="sign">
+          Forgot password?
+          <Link to="/forgot">
+            <span className="forget">Click here</span>
+          </Link>
         </div>
       </div>
     </Wrapper>
@@ -162,6 +170,7 @@ const Wrapper = styled.div`
     text-transform: uppercase;
     margin: 0 auto;
     color: white;
+    border: none;
   }
   .sign {
     margin-top: 2rem;
@@ -169,6 +178,9 @@ const Wrapper = styled.div`
     span {
       color: #31d7a9;
       margin-left: 0.5rem;
+    }
+    .forget {
+      color: red;
     }
   }
   .or {

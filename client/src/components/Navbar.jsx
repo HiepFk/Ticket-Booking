@@ -1,12 +1,17 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaTimes, FaBars } from "react-icons/fa";
+import styled from "styled-components";
+
+import { useSelector, useDispatch } from "react-redux";
+import { logOutUser } from "../apis/auth";
+
 import { links } from "../utils/link";
 import img from "../assets/logo.png";
 
-import styled from "styled-components";
-
 function Navbar() {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth?.user);
   const [choise, setChoise] = useState(false);
   const wrapperRef = useRef();
   useEffect(() => {
@@ -49,10 +54,22 @@ function Navbar() {
               </li>
             );
           })}
+          {user && (
+            <Link to={`/me`} className="header_link">
+              Me
+            </Link>
+          )}
         </ul>
-        <Link to={`/login`} className="header_link">
-          Login
-        </Link>
+
+        {!user ? (
+          <Link to={`/login`} className="header_link">
+            Login
+          </Link>
+        ) : (
+          <div className="header_link" onClick={() => logOutUser(dispatch)}>
+            Log Out
+          </div>
+        )}
       </div>
     </Wrapper>
   );

@@ -77,8 +77,8 @@ export const activeEmail = async (activation_token, dispatch, navigate) => {
     });
     dispatch(SignUpSuccess(res.data));
     dispatch(ShowAlert(res.data));
-    navigate("/");
     const timeoutID = window.setTimeout(() => {
+      // navigate("/");
       dispatch(HideAlert());
     }, 5000);
     return () => window.clearTimeout(timeoutID);

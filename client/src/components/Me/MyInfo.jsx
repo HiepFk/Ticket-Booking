@@ -114,7 +114,7 @@ const Wrapper = styled.div`
     margin-top: 2rem;
   }
   .input {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     label {
       display: inline-block;
       width: 20rem;
@@ -131,6 +131,8 @@ const Wrapper = styled.div`
       color: white;
       border: 1px solid #ccc;
       opacity: 0.8;
+      width: 80%;
+      min-width: 15rem;
     }
   }
   .btn {
@@ -148,9 +150,9 @@ const Wrapper = styled.div`
     font-size: 1.25rem;
     border: none;
   }
-  @media (max-width: 600px) {
+  @media (max-width: 768px) {
     label {
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
     }
   }
 `;

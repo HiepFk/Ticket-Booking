@@ -17,7 +17,7 @@ function ActivationEmail() {
 
   return (
     <Wrapper>
-      <div className="active_title">Active Your Email 😊😊😊😊</div>
+      <div className="active_title">Actived Your Email 😊😊😊😊</div>
     </Wrapper>
   );
 }
@@ -27,6 +27,7 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 85vh;
   .active_title {
     font-weight: 400;
     font-size: 2rem;

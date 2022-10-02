@@ -10,6 +10,9 @@ import {
   Food,
   CheckOut,
   Me,
+  ActivationEmail,
+  ForgotPassword,
+  ResetPassword,
 } from "./pages";
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
@@ -30,6 +33,18 @@ function App() {
         <Route exact path="food" element={<Food />} />
         <Route exact path="checkout" element={<CheckOut />} />
         <Route exact path="me" element={<Me />} />
+
+        <Route
+          exact
+          path="user/activate/:activation_token"
+          element={<ActivationEmail />}
+        />
+        <Route
+          exact
+          path="user/reset/:activation_token"
+          element={<ResetPassword />}
+        />
+        <Route exact path="forgot" element={<ForgotPassword />} />
         <Route path="*" element={<Error />} />
       </Routes>
       <Footer />

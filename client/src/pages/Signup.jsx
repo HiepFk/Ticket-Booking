@@ -174,6 +174,7 @@ const Wrapper = styled.div`
     text-transform: uppercase;
     margin: 0 auto;
     color: white;
+    border: none;
   }
   .sign {
     margin-top: 2rem;
