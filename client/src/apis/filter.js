@@ -23,7 +23,6 @@ export const updateFilter = (dispatch, e) => {
 };
 
 export const updateSort = (dispatch, e) => {
-  console.log(e);
   dispatch(UpdateSort(e));
 };
 export const sortMovie = (dispatch) => {

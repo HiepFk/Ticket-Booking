@@ -23,8 +23,6 @@ function Banner() {
     return <Loading />;
   }
 
-  console.log(data);
-
   return (
     <Wrapper>
       <Swiper

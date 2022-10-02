@@ -18,6 +18,7 @@ function Banner({ movie = {} }) {
             <img src={movie?.poster} alt="" className="img" />
             <div className="right">
               <div className="name">{movie?.name}</div>
+              <div className="desc">{movie?.description}</div>
               <div className="desc_list">
                 <div className="desc_item">
                   <BsTag className="icon" />
@@ -90,7 +91,12 @@ const Wrapper = styled.div`
   .name {
     font-size: 4rem;
     font-weight: bold;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
+  }
+  .desc {
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
   }
   .desc_item {
     display: flex;
@@ -126,6 +132,8 @@ const Wrapper = styled.div`
       padding-top: 5rem;
     }
     .img {
+      margin-top: 5rem;
+      margin-bottom: 1rem;
       width: 15rem;
     }
     .name {

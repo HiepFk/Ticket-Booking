@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import img from "../assets/logo.png";
 import { links } from "../utils/link";
@@ -7,8 +7,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { logOutUser } from "../apis/auth";
 function Header() {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.auth?.user?.user);
+  const user = useSelector((state) => state.auth?.user);
   const [index, setIndex] = useState(1);
+
   const wrapperRef = useRef();
   useEffect(() => {
     const changeColorWrapper = () => {
@@ -26,6 +27,27 @@ function Header() {
       window.removeEventListener("scroll", changeColorWrapper);
     };
   }, []);
+
+  const navigate = useNavigate();
+  const pathname = window.location.pathname;
+  useEffect(() => {
+    if (pathname === "/") {
+      setIndex(1);
+    }
+    if (pathname === "/movies") {
+      setIndex(2);
+    }
+    if (pathname.includes("food")) {
+      setIndex(3);
+    }
+    if (pathname.includes("me")) {
+      setIndex(5);
+    }
+    if (pathname === "/login") {
+      setIndex(0);
+    }
+  }, [navigate, pathname]);
+
   return (
     <Wrapper className="">
       <div className="wrapper" ref={wrapperRef}>
@@ -51,7 +73,12 @@ function Header() {
               );
             })}
             {user && (
-              <Link to={`/me`} className="menu_item item">
+              <Link
+                to={`/me`}
+                className={
+                  index === 5 ? "item menu_item active" : "item menu_item"
+                }
+              >
                 Me
               </Link>
             )}

@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
 import MyInfo from "../components/Me/MyInfo";
 import MyTicket from "../components/Me/MyTicket";
 import styled from "styled-components";
 function Me() {
   const [choise, setChoise] = useState(1);
+  const navigate = useNavigate();
+  const user = useSelector((state) => state.auth?.user);
   const list = [
     {
       id: 1,
@@ -15,12 +20,16 @@ function Me() {
       title: "My Ticket",
     },
   ];
+  useEffect(() => {
+    if (!user) {
+      navigate("/");
+    }
+  }, [navigate, user]);
   return (
     <Wrapper className="app">
       <div className="choise_title">
-        <div className="hi">
-          Xin Chào : <span>Admin</span>{" "}
-        </div>
+        <div className="hi">Xin Chào :</div>
+        <div className="name">{user?.name}</div>
         {list.map((item) => {
           return (
             <div
@@ -35,7 +44,7 @@ function Me() {
           );
         })}
       </div>
-      <div className="choise_list">
+      <div className="choise_list page">
         {choise === 1 && <MyInfo />}
         {choise === 2 && <MyTicket />}
       </div>
@@ -51,11 +60,12 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     .hi {
-      margin-bottom: 2rem;
       font-size: 1.5rem;
-      span {
-        color: #31d7a9;
-      }
+    }
+    .name {
+      margin-bottom: 3rem;
+      color: #31d7a9;
+      font-size: 1.5rem;
     }
     .choise_item {
       font-size: 1.25rem;

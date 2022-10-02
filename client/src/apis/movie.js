@@ -25,7 +25,7 @@ export const getMovie = async (dispatch, id) => {
   dispatch(GetMovieStart());
   try {
     const res = await axios.get(`${link}/v1/movie/${id}`);
-    dispatch(GetMovieSuccess(res.data));
+    dispatch(GetMovieSuccess(res.data?.data));
   } catch (error) {
     GetMovieError(dispatch, error);
   }

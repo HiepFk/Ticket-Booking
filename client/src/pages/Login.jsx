@@ -3,7 +3,8 @@ import styled from "styled-components";
 import img from "../assets/login.jpg";
 import { FaFacebookF, FaGoogle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
-import { loginUser } from "../apis/auth";
+import { loginUser, signInWithGoogle } from "../apis/auth";
+
 import { useSelector, useDispatch } from "react-redux";
 
 function Login() {
@@ -37,7 +38,7 @@ function Login() {
     >
       <div className="wrapper">
         <div className="title">Hello</div>
-        <div className="hi">WELCOME BACK</div>
+        {/* <div className="hi">WELCOME BACK</div> */}
         <form className="form" onSubmit={handeLogin}>
           <div className="form_group">
             <label>
@@ -78,7 +79,10 @@ function Login() {
           <div className="icon">
             <FaFacebookF />
           </div>
-          <div className="icon">
+          <div
+            className="icon"
+            onClick={() => signInWithGoogle(dispatch, navigate)}
+          >
             <FaGoogle />
           </div>
         </div>
@@ -140,6 +144,8 @@ const Wrapper = styled.div`
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     font-size: 1rem;
     color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 1rem;
+    width: 25rem;
   }
   button {
     background-image: -webkit-linear-gradient(

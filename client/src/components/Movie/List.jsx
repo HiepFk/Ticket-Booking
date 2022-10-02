@@ -26,7 +26,6 @@ function List({ movies }) {
   if (FilterMovies?.length === 0) {
     return <NoProduct>Sorry , no movies can't be found 😥</NoProduct>;
   }
-  console.log(FilterMovies);
   return (
     <Wrapper>
       {listView ? (

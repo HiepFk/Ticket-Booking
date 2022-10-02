@@ -62,5 +62,5 @@ img {
   padding: 0 1rem;
 }
 .page {
-  height: 50vh;
+  min-height: 70vh;
 }

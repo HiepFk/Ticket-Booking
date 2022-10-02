@@ -8,4 +8,21 @@ import Food from "./Food.jsx";
 import CheckOut from "./CheckOut.jsx";
 import Me from "./Me.jsx";
 
-export { Home, Login, Signup, Movies, Movie, Ticket, Food, CheckOut, Me };
+import ActivationEmail from "./auth/ActivationEmail";
+import ForgotPassword from "./auth/ForgotPassword";
+import ResetPassword from "./auth/ResetPassword";
+
+export {
+  Home,
+  Login,
+  Signup,
+  Movies,
+  Movie,
+  Ticket,
+  Food,
+  CheckOut,
+  Me,
+  ActivationEmail,
+  ForgotPassword,
+  ResetPassword,
+};

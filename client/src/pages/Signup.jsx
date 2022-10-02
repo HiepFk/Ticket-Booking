@@ -4,7 +4,7 @@ import img from "../assets/login.jpg";
 import { FaFacebookF, FaGoogle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { signUp } from "../apis/auth";
+import { signUp, signInWithGoogle } from "../apis/auth";
 
 function SignUp() {
   const dispatch = useDispatch();
@@ -38,7 +38,7 @@ function SignUp() {
     >
       <div className="wrapper">
         <div className="title">WELCOME</div>
-        <div className="hi">TO FK ' CINEMA</div>
+        {/* <div className="hi">TO FK ' CINEMA</div> */}
         <form className="form" onSubmit={handeSignup}>
           <div className="form_group">
             <label>
@@ -91,7 +91,10 @@ function SignUp() {
           <div className="icon">
             <FaFacebookF />
           </div>
-          <div className="icon">
+          <div
+            className="icon"
+            onClick={() => signInWithGoogle(dispatch, navigate)}
+          >
             <FaGoogle />
           </div>
         </div>
@@ -153,6 +156,8 @@ const Wrapper = styled.div`
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     font-size: 1rem;
     color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 1rem;
+    width: 25rem;
   }
   button {
     background-image: -webkit-linear-gradient(

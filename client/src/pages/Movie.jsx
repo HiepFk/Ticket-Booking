@@ -12,7 +12,7 @@ function Movie() {
   const { id } = useParams();
 
   const { loading, error } = useSelector((state) => state.movie);
-  const movie = useSelector((state) => state.movie?.movie?.movie);
+  const movie = useSelector((state) => state.movie?.movie);
 
   useEffect(() => {
     getMovie(dispatch, id);
