@@ -4,7 +4,7 @@ const factory = require("./handlerFactory");
 const scheduleController = {
   getListSchedule: factory.getAll(Schedule),
 
-  getSchedule: factory.getOne(Schedule),
+  getSchedule: factory.getOneById(Schedule),
 
   createSchedule: factory.createOne(Schedule),
 

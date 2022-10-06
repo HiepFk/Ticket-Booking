@@ -10,7 +10,6 @@ export const getAllScheduleByMovie = async (
   const day = query.get("day");
   const city = query.get("city");
   const link = `${api}/v1/schedule?name=${name}&day=${day}&city=${city}`;
-  // const link = `${api}/v1/schedule?name=${name}`;
   setLoading(true);
   try {
     const res = await axios.get(link);

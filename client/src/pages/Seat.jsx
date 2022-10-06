@@ -7,16 +7,16 @@ import { getSchedule } from "../apis/schedule";
 import screen from "../assets/screen.png";
 function Seat() {
   const { id } = useParams();
-  console.log(id);
+  // console.log(id);
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(false);
   const [selected, setSelected] = useState([]);
+  // const [seat, setSeat] = useState([]);
   const nameArr = ["A", "B", "C", "D", "E", "F", "G"];
   const arr1 = [1, 2, 3, 4, 5, 6];
   const arr3 = [7, 8, 9, 10, 11, 12];
 
   const handeSelected = (value) => {
-    // console.log();
     if (selected.includes(value)) {
       setSelected(
         selected.filter((item) => {
@@ -35,12 +35,38 @@ function Seat() {
   if (loading) {
     return <Loading />;
   }
-  console.log(data);
+
   return (
     <Wrapper className="app">
       <div className="title">
         <div className="pillar"></div>
+        <div className="desc">Info :</div>
+      </div>
+      <div className="info">
+        <div className="info_desc">
+          <div className="cinema">{data?.room?.cinema?.name}</div>
+          <div className="cot">|</div>
+          <div className="cinema">{data?.room?.name}</div>
+        </div>
+        <div className="info_desc">
+          <div className="day">{data?.day}</div>
+          <div className="cot">|</div>
+          <div className="time">{data?.time}</div>
+        </div>
+      </div>
+      <div className="title">
+        <div className="pillar"></div>
         <div className="desc">Choose your seat :</div>
+      </div>
+      <div className="types">
+        <div className="type">
+          <div className="unavailable"></div>
+          <div className="text">UnAvailable</div>
+        </div>
+        <div className="type">
+          <div className="available"></div>
+          <div className="text">Available</div>
+        </div>
       </div>
       <div className="container">
         <div className="img_screen">
@@ -50,46 +76,88 @@ function Seat() {
           {nameArr.map((item) => {
             return (
               <div className="seat_line">
-                {/* <span>{item}</span> */}
                 <div className="seat_area">
                   <div className="right">
                     {arr1.map((item_mini) => {
                       return (
-                        <div
-                          alt=""
-                          className={
-                            selected.includes(item + "" + item_mini)
-                              ? "img_seat selected"
-                              : "img_seat"
-                          }
-                          key={item + "" + item_mini}
-                          onClick={() => handeSelected(item + "" + item_mini)}
-                        >
-                          {item + "" + item_mini}
-                        </div>
+                        <>
+                          {data?.seatAvailable?.includes(
+                            item + "" + item_mini
+                          ) && (
+                            <>
+                              <div
+                                alt=""
+                                className={"img_seat active"}
+                                key={item + "" + item_mini}
+                              >
+                                {item + "" + item_mini}
+                              </div>
+                            </>
+                          )}
+
+                          {!data?.seatAvailable?.includes(
+                            item + "" + item_mini
+                          ) && (
+                            <div
+                              alt=""
+                              className={
+                                selected.includes(item + "" + item_mini)
+                                  ? "img_seat selected"
+                                  : "img_seat"
+                              }
+                              key={item + "" + item_mini}
+                              onClick={() =>
+                                handeSelected(item + "" + item_mini)
+                              }
+                            >
+                              {item + "" + item_mini}
+                            </div>
+                          )}
+                        </>
                       );
                     })}
                   </div>
                   <div className="left">
                     {arr3.map((item_mini) => {
                       return (
-                        <div
-                          alt=""
-                          className={
-                            selected.includes(item + "" + item_mini)
-                              ? "img_seat selected"
-                              : "img_seat "
-                          }
-                          key={item + "" + item_mini}
-                          onClick={() => handeSelected(item + "" + item_mini)}
-                        >
-                          {item + "" + item_mini}
-                        </div>
+                        <>
+                          {data?.seatAvailable?.includes(
+                            item + "" + item_mini
+                          ) && (
+                            <>
+                              <div
+                                alt=""
+                                className={"img_seat active"}
+                                key={item + "" + item_mini}
+                              >
+                                {item + "" + item_mini}
+                              </div>
+                            </>
+                          )}
+
+                          {!data?.seatAvailable?.includes(
+                            item + "" + item_mini
+                          ) && (
+                            <div
+                              alt=""
+                              className={
+                                selected.includes(item + "" + item_mini)
+                                  ? "img_seat selected"
+                                  : "img_seat"
+                              }
+                              key={item + "" + item_mini}
+                              onClick={() =>
+                                handeSelected(item + "" + item_mini)
+                              }
+                            >
+                              {item + "" + item_mini}
+                            </div>
+                          )}
+                        </>
                       );
                     })}
                   </div>
                 </div>
-                {/* <span>{item}</span> */}
               </div>
             );
           })}
@@ -108,6 +176,24 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  .info,
+  .types {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  .info_desc,
+  .type {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    display: flex;
+  }
+  .cot {
+    margin-right: 1rem;
+    margin-left: 1rem;
+  }
   .title {
     display: flex;
     width: 100%;
@@ -135,10 +221,6 @@ const Wrapper = styled.div`
     margin-bottom: 2rem;
   }
   .seat_line {
-    /* width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center; */
     margin-bottom: 2rem;
   }
   .seat_area {
@@ -166,12 +248,24 @@ const Wrapper = styled.div`
       background-color: #31d7a9;
     }
   }
-  .active {
+  .active,
+  .unavailable {
     background-color: #e53637;
     pointer-events: none;
   }
-  .selected {
+  .selected,
+  .available {
     background-color: #31d7a9;
+  }
+  .type {
+    align-items: center;
+  }
+  .unavailable,
+  .available {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 0.2rem;
+    margin-right: 2rem;
   }
   .btn {
     margin-top: 2rem;
