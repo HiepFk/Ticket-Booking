@@ -1,14 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
-import screen from "../../assets/screen.png";
-import { Link } from "react-router-dom";
+
+import Loading from "../components/Loading";
+import { getSchedule } from "../apis/schedule";
+import screen from "../assets/screen.png";
 function Seat() {
+  const { id } = useParams();
+  console.log(id);
+  const [data, setData] = useState({});
+  const [loading, setLoading] = useState(false);
   const [selected, setSelected] = useState([]);
   const nameArr = ["A", "B", "C", "D", "E", "F", "G"];
   const arr1 = [1, 2, 3, 4, 5, 6];
   const arr3 = [7, 8, 9, 10, 11, 12];
 
   const handeSelected = (value) => {
+    // console.log();
     if (selected.includes(value)) {
       setSelected(
         selected.filter((item) => {
@@ -20,8 +28,16 @@ function Seat() {
     }
   };
 
+  useEffect(() => {
+    getSchedule(setData, setLoading, id);
+  }, [id]);
+
+  if (loading) {
+    return <Loading />;
+  }
+  console.log(data);
   return (
-    <Wrapper>
+    <Wrapper className="app">
       <div className="title">
         <div className="pillar"></div>
         <div className="desc">Choose your seat :</div>
@@ -86,6 +102,7 @@ function Seat() {
   );
 }
 const Wrapper = styled.div`
+  padding-top: 8rem;
   margin-bottom: 5rem;
   display: flex;
   align-items: center;

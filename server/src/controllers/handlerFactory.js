@@ -34,6 +34,17 @@ const handlerFactory = {
         const queryObj = { ...req.query };
         const query = Model.find(queryObj);
         data = await query;
+
+        if (queryObj.city) {
+          data = data.filter((item) => {
+            return item?.room?.cinema?.city === queryObj.city;
+          });
+        }
+        if (queryObj.name) {
+          data = data.filter((item) => {
+            return item?.movie?.slug === queryObj.name;
+          });
+        }
       } else {
         data = await Model.find();
       }

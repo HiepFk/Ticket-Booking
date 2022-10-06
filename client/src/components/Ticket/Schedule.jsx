@@ -1,61 +1,51 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
+import { getAllScheduleByMovie } from "../../apis/schedule";
+
+import Loading from "../Loading";
 import styled from "styled-components";
 
-function Schedule() {
-  const [time, setTime] = useState("");
-  const [room, setRoom] = useState("");
+function Schedule({ setSearchParams, searchParams }) {
+  const { id } = useParams();
 
-  const times = [
-    "9:30",
-    "10:45",
-    "12:00",
-    "13:45",
-    "15:00",
-    "16:30",
-    "17:15",
-    "18:00",
-    "19:30",
-    "20:45",
-    "21:30",
-    "22:15",
-    "23:00",
-  ];
-  const rooms = ["01", "02", "03", "04", "05", "06"];
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    getAllScheduleByMovie(setData, setLoading, id, searchParams);
+  }, [id, searchParams]);
+
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <Wrapper>
       <div className="title">
         <div className="pillar"></div>
-        <div className="desc">Chọn phòng :</div>
+        <div className="desc">All Schedule :</div>
       </div>
-      <div className="dates">
-        {rooms.map((item, index) => {
-          return (
-            <div
-              className={item === room ? "date active" : "date"}
-              key={index}
-              onClick={() => setRoom(item)}
-            >
-              {item}
-            </div>
-          );
-        })}
-      </div>
-      <div className="title">
-        <div className="pillar"></div>
-        <div className="desc">Thời gian chiếu :</div>
-      </div>
-      <div className="dates">
-        {times.map((item, index) => {
-          return (
-            <div
-              className={item === time ? "date active" : "date"}
-              key={index}
-              onClick={() => setTime(item)}
-            >
-              {item}
-            </div>
-          );
-        })}
+      <div className="schedules">
+        {data?.length === 0 ? (
+          <div className="schedule_non">
+            Chưa có lịch công chiếu tạp cụm rạp này 😥.
+          </div>
+        ) : (
+          <>
+            {data?.map((item) => {
+              return (
+                <Link
+                  to={`/seat/${item.id}`}
+                  className="schedule"
+                  key={item.id}
+                >
+                  <div className="cinema">{item.room.cinema.name} : </div>
+                  <div className="date">{item.time}</div>
+                </Link>
+              );
+            })}
+          </>
+        )}
       </div>
     </Wrapper>
   );
@@ -79,11 +69,19 @@ const Wrapper = styled.div`
     color: white;
     font-weight: 600;
   }
-  .dates {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
-    grid-gap: 1rem;
-    margin-top: 1rem;
+  .schedule {
+    display: flex;
+    margin-bottom: 1.5rem;
+    color: white;
+  }
+  .schedule_non {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  .cinema {
+    font-size: 1.25rem;
+    font-weight: bold;
+    width: 15rem;
   }
   .date {
     padding: 0.5rem 0.75rem;
@@ -95,9 +93,6 @@ const Wrapper = styled.div`
     :hover {
       background-color: #31d7a9;
     }
-  }
-  .active {
-    background-color: #31d7a9;
   }
 `;
 

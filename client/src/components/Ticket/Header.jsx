@@ -1,40 +1,52 @@
 import React from "react";
 import styled from "styled-components";
-function Header() {
-  let d = new Date();
-  let year = d.getFullYear();
-  let month = d.getMonth() + 1;
-  let day = d.getDate();
-  const cinema = ["Hoàng Mai", "Giải Phóng", "Bà Triệu", "Tràng Tiền "];
+function Header({ setSearchParams, searchParams }) {
+  const today = new Date();
+  const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   return (
     <Wrapper>
-      <form className="sort_form">
+      <form
+        className="sort_form"
+        onChange={(e) =>
+          setSearchParams({
+            city: e.target.value,
+            day: searchParams.get("day"),
+          })
+        }
+      >
         <label htmlFor="sort">City: </label>
         <select name="sort" id="sort" className="sort_input">
-          <option value="trending">Hà Nội</option>
-          <option value="name-a">TP Hồ Chí Minh </option>
-          <option value="name-z">Đằ Nẵng</option>
+          <option value="Hà Nội">Hà Nội</option>
+          <option value="Hồ Chí Minh">TP Hồ Chí Minh</option>
+          <option value="Đằ Nẵng">Đằ Nẵng</option>
         </select>
       </form>
-      <form className="sort_form">
-        <label htmlFor="sort">Rạp : </label>
-        <select name="sort" id="sort" className="sort_input">
-          {cinema.map((item, index) => {
-            return (
-              <option value={item} key={index}>
-                {item}
-              </option>
-            );
-          })}
-        </select>
-      </form>
-      <form className="sort_form">
+      <form
+        className="sort_form"
+        onChange={(e) =>
+          setSearchParams({
+            day: e.target.value,
+            city: searchParams.get("city"),
+          })
+        }
+      >
         <label htmlFor="sort">Date : </label>
         <select name="sort" id="sort" className="sort_input">
-          <option value="name-a">{`${day} / ${month} / ${year}`}</option>
-          <option value="name-a">{`${day + 1} / ${month} / ${year}`}</option>
-          <option value="name-a">{`${day + 2} / ${month} / ${year}`}</option>
+          {arr.map((item) => {
+            let tomorrow = new Date(
+              today.getTime() + 24 * 60 * 60 * 1000 * item
+            );
+            let year = tomorrow.getFullYear();
+            let month = tomorrow.getMonth() + 1;
+            let day = tomorrow.getDate() - 1;
+            return (
+              <option
+                value={`${day}/${month}/${year}`}
+                key={item}
+              >{`${day} / ${month} / ${year}`}</option>
+            );
+          })}
         </select>
       </form>
     </Wrapper>

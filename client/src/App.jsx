@@ -7,6 +7,7 @@ import {
   Movies,
   Movie,
   Ticket,
+  Seat,
   Food,
   CheckOut,
   Me,
@@ -30,6 +31,7 @@ function App() {
         <Route exact path="movies" element={<Movies />} />
         <Route exact path="movies/:id" element={<Movie />} />
         <Route exact path="movies/ticket/:id" element={<Ticket />} />
+        <Route exact path="seat/:id" element={<Seat />} />
         <Route exact path="food" element={<Food />} />
         <Route exact path="checkout" element={<CheckOut />} />
         <Route exact path="me" element={<Me />} />

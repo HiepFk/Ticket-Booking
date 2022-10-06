@@ -14,6 +14,14 @@ const scheduleSchema = new mongoose.Schema(
     },
     day: String,
     time: String,
+    seatUnAvailable: {
+      type: Array,
+      default: [],
+    },
+    seatAvailable: {
+      type: Array,
+      default: [],
+    },
   },
   {
     toJSON: { virtuals: true },
@@ -21,6 +29,23 @@ const scheduleSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+
+// scheduleSchema.virtual("rooms", {
+//   ref: "Room",
+//   foreignField: "schedule",
+//   localField: "_id",
+// });
+
+scheduleSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: "room",
+    select: "name",
+  }).populate({
+    path: "movie",
+    select: "slug",
+  });
+  next();
+});
 
 const Schedule = mongoose.model("Schedule", scheduleSchema);
 

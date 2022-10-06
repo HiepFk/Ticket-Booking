@@ -7,6 +7,7 @@ import Ticket from "./Ticket.jsx";
 import Food from "./Food.jsx";
 import CheckOut from "./CheckOut.jsx";
 import Me from "./Me.jsx";
+import Seat from "./Seat.jsx";
 
 import ActivationEmail from "./auth/ActivationEmail";
 import ForgotPassword from "./auth/ForgotPassword";
@@ -19,6 +20,7 @@ export {
   Movies,
   Movie,
   Ticket,
+  Seat,
   Food,
   CheckOut,
   Me,

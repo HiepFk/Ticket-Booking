@@ -2,7 +2,7 @@ const scheduleController = require("../controllers/scheduleController");
 const { isAuthenticatedUser, isAdmin } = require("../middleware/auth");
 const router = require("express").Router();
 
-router.use(isAuthenticatedUser, isAdmin);
+// router.use(isAuthenticatedUser, isAdmin);
 
 router
   .route("/")
