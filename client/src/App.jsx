@@ -34,7 +34,7 @@ function App() {
         <Route exact path="seat/:id" element={<Seat />} />
         <Route exact path="food" element={<Food />} />
         <Route exact path="checkout" element={<CheckOut />} />
-        <Route exact path="me" element={<Me />} />
+        <Route exact path="/me/*" element={<Me />} />
 
         <Route
           exact

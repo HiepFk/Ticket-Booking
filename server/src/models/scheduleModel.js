@@ -42,7 +42,7 @@ scheduleSchema.pre(/^find/, function (next) {
     select: "name",
   }).populate({
     path: "movie",
-    select: "slug",
+    select: "slug name poster",
   });
   next();
 });

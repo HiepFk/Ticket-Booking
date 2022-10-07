@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Routes, Route, Link } from "react-router-dom";
+
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -9,22 +11,38 @@ function Me() {
   const [choise, setChoise] = useState(1);
   const navigate = useNavigate();
   const user = useSelector((state) => state.auth?.user);
+  const pathname = window.location.pathname;
+
   const list = [
     {
       id: 1,
       title: "My Info",
+      url: "/me/info",
     },
 
     {
       id: 2,
       title: "My Ticket",
+      url: "/me/ticket",
     },
   ];
+
   useEffect(() => {
     if (!user) {
       navigate("/");
     }
   }, [navigate, user]);
+
+  useEffect(() => {
+    if (pathname === "/me" || pathname === "/me/info") {
+      navigate("/me/info");
+      setChoise(1);
+    }
+    if (pathname === "/me/password") {
+      setChoise(2);
+    }
+  }, [navigate, pathname]);
+
   return (
     <Wrapper className="app">
       <div className="choise_title">
@@ -32,7 +50,8 @@ function Me() {
         <div className="name">{user?.name}</div>
         {list.map((item) => {
           return (
-            <div
+            <Link
+              to={`${item.url}`}
               className={
                 choise === item.id ? "choise_item active" : "choise_item"
               }
@@ -40,13 +59,15 @@ function Me() {
               onClick={() => setChoise(item.id)}
             >
               {item.title}
-            </div>
+            </Link>
           );
         })}
       </div>
       <div className="choise_list page">
-        {choise === 1 && <MyInfo />}
-        {choise === 2 && <MyTicket />}
+        <Routes>
+          <Route exact path="info" element={<MyInfo />} />
+          <Route exact path="ticket" element={<MyTicket />} />
+        </Routes>
       </div>
     </Wrapper>
   );
@@ -76,6 +97,7 @@ const Wrapper = styled.div`
       border-left: 0.2rem solid transparent;
       transition: all 0.25s linear;
       cursor: pointer;
+      color: white;
       :hover {
         color: #31d7a9;
         border-left: 0.2rem solid #31d7a9;
@@ -84,7 +106,7 @@ const Wrapper = styled.div`
   }
   .active {
     border-left: 0.2rem solid #31d7a9 !important;
-    color: #31d7a9;
+    color: #31d7a9 !important;
   }
   .choise_list {
     background-color: #212121 !important;

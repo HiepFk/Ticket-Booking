@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-function Detail() {
+function Detail({ data }) {
   return (
     <Wrapper>
       <div className="wrapper">
@@ -17,24 +17,30 @@ function Detail() {
       </div>
 
       <div className="wrapper">
-        <div className="name">John Wick</div>
+        <div className="name">{data?.name}</div>
         <div className="title">
-          <div>Quantity :</div> <span>5</span>
+          <div>Quantity :</div> <span>{data?.seat?.length}</span>
         </div>
         <div className="title">
-          <div>Seat :</div> <span>A1,A2</span>
+          <div>Seat :</div>
+          {data.seat.map((item, id) => {
+            return <span key={id}>{item}</span>;
+          })}
         </div>
         <div className="title">
-          <div>Cinema :</div> <span>Hoàng Mai</span>
+          <div>Cinema :</div> <span>{data?.cinema}</span>
         </div>
         <div className="title">
-          <div>Room :</div> <span>01</span>
+          <div>Room :</div> <span>{data?.room}</span>
         </div>
         <div className="title">
-          <div>Date :</div> <span>5h - 12/8/2001</span>
+          <div>Date :</div>{" "}
+          <span>
+            {data?.time} - {data?.day}
+          </span>
         </div>
         <div className="title">
-          <div>Cost :</div> <span>$12</span>
+          <div>Cost :</div> <span>{`$${data?.seat?.length * 5}`}</span>
         </div>
       </div>
     </Wrapper>

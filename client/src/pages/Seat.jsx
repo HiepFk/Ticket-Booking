@@ -15,6 +15,7 @@ function Seat() {
   const nameArr = ["A", "B", "C", "D", "E", "F", "G"];
   const arr1 = [1, 2, 3, 4, 5, 6];
   const arr3 = [7, 8, 9, 10, 11, 12];
+  const [ticket, setTicket] = useState({});
 
   const handeSelected = (value) => {
     if (selected.includes(value)) {
@@ -26,16 +27,17 @@ function Seat() {
     } else {
       setSelected([...selected, value]);
     }
+    setTicket({ ...ticket, seat: selected });
   };
 
   useEffect(() => {
-    getSchedule(setData, setLoading, id);
+    getSchedule(setData, setLoading, id, setTicket);
   }, [id]);
 
   if (loading) {
     return <Loading />;
   }
-
+  console.log(ticket);
   return (
     <Wrapper className="app">
       <div className="title">
@@ -52,6 +54,11 @@ function Seat() {
           <div className="day">{data?.day}</div>
           <div className="cot">|</div>
           <div className="time">{data?.time}</div>
+        </div>
+        <div className="info_desc">
+          <div className="day">Movie</div>
+          <div className="cot">: </div>
+          <div className="time">{data?.movie?.name}</div>
         </div>
       </div>
       <div className="title">
@@ -163,7 +170,7 @@ function Seat() {
           })}
         </div>
       </div>
-      <Link to={"/checkout"}>
+      <Link to={"/checkout"} state={ticket}>
         <div className="btn">Check Out</div>
       </Link>
     </Wrapper>

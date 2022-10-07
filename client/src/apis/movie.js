@@ -15,7 +15,6 @@ export const getAllMovie = async (dispatch) => {
   dispatch(GetMoviesStart());
   try {
     const res = await axios.get(`${link}/v1/movie/`);
-    console.log(res.data);
     dispatch(GetMoviesSuccess(res.data));
   } catch (error) {
     GetMoviesError(dispatch, error);

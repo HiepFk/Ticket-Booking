@@ -1,20 +1,22 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
+
 import Detail from "../components/CheckOut/Detail";
 import Payment from "../components/CheckOut/Payment";
 import styled from "styled-components";
 
 function CheckOut() {
+  const location = useLocation();
+  const data = location.state;
+
+  console.log(data);
   return (
     <Wrapper className="app">
       <div className="left">
-        <img
-          src="https://firebasestorage.googleapis.com/v0/b/booking-ticket-online-fk.appspot.com/o/movie%2Fmain_5.jpg?alt=media&token=1cbdf27a-5b2e-4c71-9e39-805383bac0c2"
-          alt=""
-          className="img"
-        />
+        <img src={data?.poster} alt="" className="img" />
         <Payment />
       </div>
-      <Detail />
+      <Detail data={data} />
     </Wrapper>
   );
 }
