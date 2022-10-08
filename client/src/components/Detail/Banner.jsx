@@ -1,10 +1,12 @@
 import React from "react";
-
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { BsClock, BsTag, BsCalendarEvent } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 function Banner({ movie = {} }) {
+  const user = useSelector((state) => state.auth.user);
+
   return (
     <Wrapper>
       <div
@@ -45,9 +47,15 @@ function Banner({ movie = {} }) {
                   <span>{movie?.time}</span>
                 </div>
               </div>
-              <Link to={`/movies/ticket/${movie.slug}`}>
-                <div className="btn">Buy ticket</div>
-              </Link>
+              {user ? (
+                <Link to={`/movies/ticket/${movie.slug}`} className="btn">
+                  <button>Buy ticket</button>
+                </Link>
+              ) : (
+                <Link to={`/login`} className="btn">
+                  <button>Login to buy ticket</button>
+                </Link>
+              )}
             </div>
           </div>
         </div>
@@ -109,23 +117,25 @@ const Wrapper = styled.div`
     font-weight: bold;
     margin-right: 1rem;
   }
-  .btn {
-    margin-top: 3rem;
+
+  button {
+    margin-top: 2rem;
     background-image: -webkit-linear-gradient(
       169deg,
       #5560ff 17%,
       #aa52a1 63%,
       #ff4343 100%
     );
-    padding: 0.5rem 0rem;
+    padding: 0.75rem 1rem;
     font-weight: bold;
     font-size: 1rem;
     border-radius: 1rem;
-    width: 8rem;
+    border: none;
     text-align: center;
     text-transform: uppercase;
     color: white;
   }
+
   @media (max-width: 650px) {
     .info {
       flex-direction: column;

@@ -23,6 +23,17 @@ const ticketSchema = new mongoose.Schema(
   }
 );
 
+ticketSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: "schedule",
+  });
+  // .populate({
+  //   path: "movie",
+  //   select: "slug name poster",
+  // });
+  next();
+});
+
 const Ticket = mongoose.model("Ticket", ticketSchema);
 
 module.exports = Ticket;

@@ -1,11 +1,27 @@
 /* eslint-disable jsx-a11y/scope */
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { createAxios } from "../../apis/createInstance";
+import { LoginSuccess } from "../../redux/authSlice";
+import { getMyTicket } from "../../apis/schedule";
 import styled from "styled-components";
 function MyTicket() {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth?.user);
+  let axiosJWT = createAxios(user, dispatch, LoginSuccess);
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    getMyTicket(axiosJWT, user?.accessToken, setData);
+  }, []);
+
+  if (!data) {
+    return <NonTicket>Bạn chưa đặt vé nào 😥</NonTicket>;
+  }
+  console.log(data);
   return (
     <Wrapper>
       <table>
-        <caption>Statement Summary</caption>
+        <caption>All Ticket</caption>
         <thead>
           <tr>
             <th scope="col">Movie</th>
@@ -15,8 +31,25 @@ function MyTicket() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td data-label="Movie">Visa - 3412</td>
+          {data.map((item, index) => {
+            return (
+              <tr key={index}>
+                <td data-label="Movie">{item?.schedule?.movie?.name}</td>
+                <td data-label="Date">
+                  {item?.schedule?.time} - {item?.schedule?.day}
+                </td>
+                <td data-label="Cost">${item?.price}</td>
+                <td data-label="Cinema-Room">
+                  {item?.schedule?.room?.name} -{" "}
+                  {item?.schedule?.room?.cinema?.name}
+                </td>
+              </tr>
+            );
+          })}
+          {/* <tr>
+            <td scope="row" data-label="Movie">
+              Visa - 3412
+            </td>
             <td data-label="Date">04/01/2016</td>
             <td data-label="Cost">$1,190</td>
             <td data-label="Cinema-Room">Hà Đông - 402</td>
@@ -44,12 +77,18 @@ function MyTicket() {
             <td data-label="Date">02/01/2016</td>
             <td data-label="Cost">$842</td>
             <td data-label="Cinema-Room">Hà Đông - 402</td>
-          </tr>
+          </tr> */}
         </tbody>
       </table>
     </Wrapper>
   );
 }
+
+const NonTicket = styled.div`
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+`;
 const Wrapper = styled.div`
   padding: 1rem 0rem;
   table {

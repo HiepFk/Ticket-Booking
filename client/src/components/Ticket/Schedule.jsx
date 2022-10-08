@@ -1,18 +1,36 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+
+import { createAxios } from "../../apis/createInstance";
+import { LoginSuccess } from "../../redux/authSlice";
+
 import { getAllScheduleByMovie } from "../../apis/schedule";
 
 import Loading from "../Loading";
 import styled from "styled-components";
 
-function Schedule({ setSearchParams, searchParams }) {
+function Schedule({ searchParams }) {
   const { id } = useParams();
 
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth?.user);
+  let axiosJWT = createAxios(user, dispatch, LoginSuccess);
+
   useEffect(() => {
-    getAllScheduleByMovie(setData, setLoading, id, searchParams);
+    getAllScheduleByMovie(
+      setData,
+      setLoading,
+      id,
+      searchParams,
+      axiosJWT,
+      user?.accessToken
+    );
+    ///// check after
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, searchParams]);
 
   if (loading) {

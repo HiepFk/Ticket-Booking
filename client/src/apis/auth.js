@@ -120,7 +120,6 @@ export const logOutUser = async (dispatch, navigate) => {
 
 export const GetMe = async (dispatch, axiosJWT, accessToken) => {
   dispatch(GetMeStart());
-  console.log(accessToken);
   try {
     await axiosJWT.get(`${link}/v1/user/me`, {
       headers: { token: `Bearer ${accessToken}` },

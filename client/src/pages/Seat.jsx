@@ -1,21 +1,29 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
-import styled from "styled-components";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
-import Loading from "../components/Loading";
+import { createAxios } from "../apis/createInstance";
+import { LoginSuccess } from "../redux/authSlice";
+
 import { getSchedule } from "../apis/schedule";
+import Loading from "../components/Loading";
+import styled from "styled-components";
 import screen from "../assets/screen.png";
 function Seat() {
   const { id } = useParams();
-  // console.log(id);
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(false);
   const [selected, setSelected] = useState([]);
-  // const [seat, setSeat] = useState([]);
   const nameArr = ["A", "B", "C", "D", "E", "F", "G"];
   const arr1 = [1, 2, 3, 4, 5, 6];
   const arr3 = [7, 8, 9, 10, 11, 12];
   const [ticket, setTicket] = useState({});
+
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth?.user);
+  let axiosJWT = createAxios(user, dispatch, LoginSuccess);
+
+  const navigate = useNavigate();
 
   const handeSelected = (value) => {
     if (selected.includes(value)) {
@@ -27,17 +35,35 @@ function Seat() {
     } else {
       setSelected([...selected, value]);
     }
-    setTicket({ ...ticket, seat: selected });
   };
 
   useEffect(() => {
-    getSchedule(setData, setLoading, id, setTicket);
+    setTicket({ ...ticket, seat: selected });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selected]);
+
+  useEffect(() => {
+    getSchedule(
+      setData,
+      setLoading,
+      id,
+      setTicket,
+      axiosJWT,
+      user?.accessToken
+    );
+    // Check aftaer
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/");
+    }
+  }, [navigate, user]);
 
   if (loading) {
     return <Loading />;
   }
-  console.log(ticket);
   return (
     <Wrapper className="app">
       <div className="title">

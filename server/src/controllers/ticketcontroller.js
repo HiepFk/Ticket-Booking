@@ -27,7 +27,7 @@ const ticketController = {
   }),
 
   userGetMyTicket: catchAsync(async (req, res) => {
-    const ticket = await Ticket.findOne({ user: req.user.id });
+    const ticket = await Ticket.find({ user: req.user.id });
     res.status(200).json({
       status: "success",
       ticket,

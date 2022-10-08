@@ -1,18 +1,18 @@
 import React from "react";
 import styled from "styled-components";
-function Detail({ data }) {
+function Detail({ data, user }) {
   return (
     <Wrapper>
       <div className="wrapper">
         <div className="title_big">Thông tin người đặt :</div>
         <div className="title">
-          <div>Name :</div> <span>Nguyễn Huy Hiệp</span>{" "}
+          <div>Name :</div> <span>{user?.name}</span>{" "}
         </div>
         <div className="title">
-          <div>Email :</div> <span>hiepnh.fk@gmail.com</span>{" "}
+          <div>Email :</div> <span>{user?.email}</span>{" "}
         </div>
         <div className="title">
-          <div>Phone :</div> <span>0359196312</span>{" "}
+          <div>Phone :</div> <span>{user?.number}</span>{" "}
         </div>
       </div>
 
@@ -23,9 +23,15 @@ function Detail({ data }) {
         </div>
         <div className="title">
           <div>Seat :</div>
-          {data.seat.map((item, id) => {
-            return <span key={id}>{item}</span>;
-          })}
+          <div>
+            {data.seat.map((item, id) => {
+              return (
+                <span className="seat" key={id}>
+                  {item},
+                </span>
+              );
+            })}
+          </div>
         </div>
         <div className="title">
           <div>Cinema :</div> <span>{data?.cinema}</span>
@@ -40,7 +46,10 @@ function Detail({ data }) {
           </span>
         </div>
         <div className="title">
-          <div>Cost :</div> <span>{`$${data?.seat?.length * 5}`}</span>
+          <div>One ticket Cost :</div> <span>$5</span>
+        </div>
+        <div className="title">
+          <div>Total :</div> <span>{`$${data?.seat?.length * 5}`}</span>
         </div>
       </div>
     </Wrapper>
@@ -58,14 +67,15 @@ const Wrapper = styled.div`
   .title {
     font-size: 1.25rem;
     color: #31d7a9;
-    margin-bottom: 0.25rem;
-    margin-top: 1rem;
     display: flex;
     justify-content: space-between;
     span {
       margin-left: 3rem;
       color: white;
     }
+  }
+  .seat {
+    margin-left: 0.5rem !important;
   }
 `;
 export default Detail;

@@ -31,14 +31,14 @@ export const createAxios = (user, dispatch, stateSuccess) => {
     async (config) => {
       let date = new Date();
 
-      const decodedToken = jwt_decode(user.accessToken);
+      const decodedToken = jwt_decode(user?.accessToken);
 
       if (decodedToken.exp < date.getTime() / 1000) {
         const data = await refreshToken(dispatch);
 
         const refreshUser = {
           ...user,
-          accessToken: data.accessToken,
+          accessToken: data?.accessToken,
         };
         dispatch(stateSuccess(refreshUser));
         config.headers["token"] = "Bearer " + data.accessToken;
