@@ -37,7 +37,7 @@ function Footer() {
             {socials.map((item) => {
               return (
                 <a className="social_item" key={item.id} href={item.url}>
-                  <img src={item?.img} alt="" className="social_img" />
+                  <img src={item.img} alt="" className="social_img" />
                 </a>
               );
             })}

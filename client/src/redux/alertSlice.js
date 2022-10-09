@@ -5,21 +5,18 @@ export const alertSlice = createSlice({
   initialState: {
     msg: "",
     type: "",
-    show: false,
   },
   reducers: {
-    ShowAlert: (state, action) => {
+    SetAlert: (state, action) => {
       return {
         ...state,
-        show: true,
         type: action.payload.status,
         msg: action.payload.message,
       };
     },
-    HideAlert: (state) => {
+    ClearAlert: (state) => {
       return {
         ...state,
-        show: false,
         type: "",
         msg: "",
       };
@@ -27,5 +24,5 @@ export const alertSlice = createSlice({
   },
 });
 
-export const { ShowAlert, HideAlert } = alertSlice.actions;
+export const { SetAlert, ClearAlert } = alertSlice.actions;
 export default alertSlice.reducer;

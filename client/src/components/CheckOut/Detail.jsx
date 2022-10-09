@@ -24,7 +24,7 @@ function Detail({ data, user }) {
         <div className="title">
           <div>Seat :</div>
           <div>
-            {data.seat.map((item, id) => {
+            {data?.seat?.map((item, id) => {
               return (
                 <span className="seat" key={id}>
                   {item},

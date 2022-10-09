@@ -35,13 +35,13 @@ function Banner() {
       >
         {data?.map((item) => {
           return (
-            <SwiperSlide key={item.id}>
+            <SwiperSlide key={item?.id}>
               <div
                 className="item"
                 style={{
                   background: `url(${item?.background}) no-repeat center center /cover`,
                 }}
-                key={item.id}
+                key={item?.id}
               >
                 <div className="container">
                   <div className="info">
@@ -51,12 +51,15 @@ function Banner() {
                       <div className="desc">{item?.description}</div>
                       <div className="button">
                         <Link
-                          to={`/movies/ticket/${item.slug}`}
+                          to={`/movies/ticket/${item?.slug}`}
                           className="btn book"
                         >
                           Book now
                         </Link>
-                        <Link to={`/movies/${item.slug}`} className="btn check">
+                        <Link
+                          to={`/movies/${item?.slug}`}
+                          className="btn check"
+                        >
                           Check now
                         </Link>
                       </div>

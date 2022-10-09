@@ -38,7 +38,7 @@ function Me() {
       navigate("/me/info");
       setChoise(1);
     }
-    if (pathname === "/me/password") {
+    if (pathname === "/me/ticket") {
       setChoise(2);
     }
   }, [navigate, pathname]);

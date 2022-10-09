@@ -53,12 +53,12 @@ function Schedule({ searchParams }) {
             {data?.map((item) => {
               return (
                 <Link
-                  to={`/seat/${item.id}`}
+                  to={`/seat/${item?.id}`}
                   className="schedule"
-                  key={item.id}
+                  key={item?.id}
                 >
-                  <div className="cinema">{item.room.cinema.name} : </div>
-                  <div className="date">{item.time}</div>
+                  <div className="cinema">{item?.room?.cinema?.name} : </div>
+                  <div className="date">{item?.time}</div>
                 </Link>
               );
             })}

@@ -15,20 +15,10 @@ import {
   GetMeError,
   GetMeSuccess,
 } from "../redux/authSlice";
-import { ShowAlert, HideAlert } from "../redux/alertSlice";
+import { SetAlert } from "../redux/alertSlice";
 
 axios.defaults.withCredentials = true;
 const link = process.env.REACT_APP_API_LINK;
-
-const ErrorMessage = (dispatch, error) => {
-  if (error?.response?.data) {
-    dispatch(ShowAlert(error.response.data));
-    const timeoutID = window.setTimeout(() => {
-      dispatch(HideAlert());
-    }, 3000);
-    return () => window.clearTimeout(timeoutID);
-  }
-};
 
 export const signInWithGoogle = async (dispatch, navigate) => {
   dispatch(LoginStart());
@@ -41,17 +31,13 @@ export const signInWithGoogle = async (dispatch, navigate) => {
         })
         .then((res) => {
           dispatch(LoginSuccess(res.data));
-          dispatch(ShowAlert(res.data));
+          dispatch(SetAlert(res.data));
           navigate("/");
-          const timeoutID = window.setTimeout(() => {
-            dispatch(HideAlert());
-          }, 3000);
-          return () => window.clearTimeout(timeoutID);
         });
     })
     .catch((error) => {
       dispatch(LoginFailed());
-      ErrorMessage(dispatch, error);
+      dispatch(SetAlert(error?.response?.data));
     });
 };
 
@@ -59,14 +45,10 @@ export const signUp = async (user, dispatch, navigate) => {
   dispatch(SignUpStart());
   try {
     const res = await axios.post(`${link}/v1/user/signup`, user);
-    dispatch(ShowAlert(res.data));
-    const timeoutID = window.setTimeout(() => {
-      dispatch(HideAlert());
-    }, 3000);
-    return () => window.clearTimeout(timeoutID);
+    dispatch(SetAlert(res.data));
   } catch (error) {
     dispatch(SignUpFailed());
-    ErrorMessage(dispatch, error);
+    dispatch(SetAlert(error?.response?.data));
   }
 };
 
@@ -76,14 +58,9 @@ export const activeEmail = async (activation_token, dispatch, navigate) => {
       activation_token,
     });
     dispatch(SignUpSuccess(res.data));
-    dispatch(ShowAlert(res.data));
-    const timeoutID = window.setTimeout(() => {
-      // navigate("/");
-      dispatch(HideAlert());
-    }, 5000);
-    return () => window.clearTimeout(timeoutID);
+    dispatch(SetAlert(res.data));
   } catch (error) {
-    ErrorMessage(dispatch, error);
+    dispatch(SetAlert(error?.response?.data));
   }
 };
 export const loginUser = async (user, dispatch, navigate) => {
@@ -91,15 +68,11 @@ export const loginUser = async (user, dispatch, navigate) => {
   try {
     const res = await axios.post(`${link}/v1/user/login`, user);
     dispatch(LoginSuccess(res.data));
-    dispatch(ShowAlert(res.data));
+    dispatch(SetAlert(res.data));
     navigate("/");
-    const timeoutID = window.setTimeout(() => {
-      dispatch(HideAlert());
-    }, 3000);
-    return () => window.clearTimeout(timeoutID);
   } catch (error) {
     dispatch(LoginFailed());
-    ErrorMessage(dispatch, error);
+    dispatch(SetAlert(error?.response?.data));
   }
 };
 
@@ -108,11 +81,7 @@ export const logOutUser = async (dispatch, navigate) => {
   try {
     const res = await axios.get(`${link}/v1/user/logout`);
     dispatch(LogOutSuccess());
-    dispatch(ShowAlert(res.data));
-    const timeoutID = window.setTimeout(() => {
-      dispatch(HideAlert());
-    }, 3000);
-    return () => window.clearTimeout(timeoutID);
+    dispatch(SetAlert(res.data));
   } catch (error) {
     dispatch(LogOutFailed());
   }
@@ -143,17 +112,11 @@ export const UpdateMe = async (dispatch, data, type, axiosJWT, accessToken) => {
       data,
       headers: { token: `Bearer ${accessToken}` },
     });
-    // console.log(res.data);
     dispatch(GetMeSuccess(res.data));
-    dispatch(ShowAlert(res.data));
-    const timeoutID = window.setTimeout(() => {
-      dispatch(HideAlert());
-    }, 3000);
-    return () => window.clearTimeout(timeoutID);
+    dispatch(SetAlert(res.data));
   } catch (error) {
-    console.log(error);
     dispatch(GetMeError());
-    ErrorMessage(dispatch, error);
+    dispatch(SetAlert(error?.response?.data));
   }
 };
 
@@ -162,26 +125,18 @@ export const createReivew = async (data, dispatch, axiosJWT, accessToken) => {
     const res = await axiosJWT.post(`${link}/v1/review/user`, data, {
       headers: { token: `Bearer ${accessToken}` },
     });
-    dispatch(ShowAlert(res.data));
-    const timeoutID = window.setTimeout(() => {
-      dispatch(HideAlert());
-    }, 3000);
-    return () => window.clearTimeout(timeoutID);
+    dispatch(SetAlert(res.data));
   } catch (error) {
-    ErrorMessage(dispatch, error);
+    dispatch(SetAlert(error?.response?.data));
   }
 };
 
 export const forgotPassword = async (email, dispatch) => {
   try {
     const res = await axios.post(`${link}/v1/user/forgot`, { email });
-    dispatch(ShowAlert(res.data));
-    const timeoutID = window.setTimeout(() => {
-      dispatch(HideAlert());
-    }, 5000);
-    return () => window.clearTimeout(timeoutID);
+    dispatch(SetAlert(res.data));
   } catch (error) {
-    ErrorMessage(dispatch, error);
+    dispatch(SetAlert(error?.response?.data));
   }
 };
 
@@ -189,13 +144,9 @@ export const resetPassword = async (data, dispatch, navigate) => {
   try {
     const res = await axios.post(`${link}/v1/user/reset`, data);
     dispatch(SignUpSuccess(res.data));
-    dispatch(ShowAlert(res.data));
+    dispatch(SetAlert(res.data));
     navigate("/");
-    const timeoutID = window.setTimeout(() => {
-      dispatch(HideAlert());
-    }, 5000);
-    return () => window.clearTimeout(timeoutID);
   } catch (error) {
-    ErrorMessage(dispatch, error);
+    dispatch(SetAlert(error?.response?.data));
   }
 };

@@ -1,17 +1,7 @@
 import axios from "axios";
 import jwt_decode from "jwt-decode";
-import { ShowAlert, HideAlert } from "../redux/alertSlice";
+import { SetAlert } from "../redux/alertSlice";
 const link = process.env.REACT_APP_API_LINK;
-
-const ErrorMessage = (dispatch, error) => {
-  if (error.response.data) {
-    dispatch(ShowAlert(error.response.data));
-    const timeoutID = window.setTimeout(() => {
-      dispatch(HideAlert());
-    }, 3000);
-    return () => window.clearTimeout(timeoutID);
-  }
-};
 
 const refreshToken = async (dispatch) => {
   try {
@@ -21,7 +11,7 @@ const refreshToken = async (dispatch) => {
 
     return res.data;
   } catch (err) {
-    ErrorMessage(dispatch, err);
+    dispatch(SetAlert(err?.response?.data));
   }
 };
 

@@ -48,7 +48,7 @@ function Banner({ movie = {} }) {
                 </div>
               </div>
               {user ? (
-                <Link to={`/movies/ticket/${movie.slug}`} className="btn">
+                <Link to={`/movies/ticket/${movie?.slug}`} className="btn">
                   <button>Buy ticket</button>
                 </Link>
               ) : (

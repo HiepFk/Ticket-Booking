@@ -12,12 +12,12 @@ function MyTicket() {
   const [data, setData] = useState([]);
   useEffect(() => {
     getMyTicket(axiosJWT, user?.accessToken, setData);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!data) {
     return <NonTicket>Bạn chưa đặt vé nào 😥</NonTicket>;
   }
-  console.log(data);
   return (
     <Wrapper>
       <table>

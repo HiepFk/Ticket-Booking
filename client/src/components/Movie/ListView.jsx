@@ -7,17 +7,17 @@ function ListView({ movies = [""] }) {
       {movies?.map((item) => {
         return (
           <div className="item">
-            <img src={item.poster} alt="" className="img" />
+            <img src={item?.poster} alt="" className="img" />
             <div className="info">
-              <div className="name">{item.name}</div>
-              <div className="time">{item.time}</div>
+              <div className="name">{item?.name}</div>
+              <div className="time">{item?.time}</div>
               <div className="gener">
                 {item?.genre?.map((item_mini, index) => {
                   return (
                     <span key={index}>
                       {item_mini}
                       <span>
-                        {index < item.genre?.length - 1 ? " | " : " "}
+                        {index < item?.genre?.length - 1 ? " | " : " "}
                       </span>
                     </span>
                   );
@@ -27,7 +27,7 @@ function ListView({ movies = [""] }) {
                 Release Date :{" "}
                 {new Date(item?.release_date).toLocaleString().slice(9)}
               </div>
-              <div className="desc">{item.description}</div>
+              <div className="desc">{item?.description}</div>
               <Link to={`${item?.slug}`} className="btn_load">
                 Detail
               </Link>

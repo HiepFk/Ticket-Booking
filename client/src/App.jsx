@@ -1,5 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { ClearAlert } from "./redux/alertSlice";
 import {
   Home,
   Login,
@@ -20,9 +24,44 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Error from "./components/Error";
 function App() {
+  const dispatch = useDispatch();
+  const alert = useSelector((state) => state.alert);
+  const success = () =>
+    toast.success(`${alert.msg}`, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  const error = () =>
+    toast.error(`${alert.msg}`, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+
+  useEffect(() => {
+    if (alert.type === "success") {
+      success();
+    }
+    if (alert.type === "error") {
+      error();
+    }
+    dispatch(ClearAlert());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [alert.type, alert.msg]);
+
   return (
     <div>
-      <Header />
+      <ToastContainer />
+      <Header onClick={success} />
       <Navbar />
       <Routes>
         <Route exact path="/" element={<Home />} />
