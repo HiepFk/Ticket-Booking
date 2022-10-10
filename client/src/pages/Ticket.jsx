@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+
 import Header from "../components/Ticket/Header";
 import Schedule from "../components/Ticket/Schedule";
 function Ticket() {

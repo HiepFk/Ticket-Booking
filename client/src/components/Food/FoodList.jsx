@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
+import styled from "styled-components";
 import { getAllFoods } from "../../apis/food";
 import Loading from "../Loading";
-
 import FoodCard from "./FoodCard";
-import styled from "styled-components";
 function FoodList() {
   const [data, setData] = useState([""]);
   const [loading, setLoading] = useState(false);

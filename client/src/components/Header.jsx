@@ -1,10 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import styled from "styled-components";
-import img from "../assets/logo.png";
-import { links } from "../utils/link";
 import { useSelector, useDispatch } from "react-redux";
+import styled from "styled-components";
+
 import { logOutUser } from "../apis/auth";
+import { links } from "../utils/link";
+import img from "../assets/logo.png";
 function Header() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth?.user);

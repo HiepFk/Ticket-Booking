@@ -1,8 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { BsClock, BsTag, BsCalendarEvent } from "react-icons/bs";
-import { Link } from "react-router-dom";
 
 function Banner({ movie = {} }) {
   const user = useSelector((state) => state.auth.user);

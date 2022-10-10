@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllMovie } from "../apis/movie";
-
 import styled from "styled-components";
-import Loading from "../components/Loading";
 
+import { getAllMovie } from "../apis/movie";
+import Loading from "../components/Loading";
 import Sort from "../components/Movie/Sort";
 import Filter from "../components/Movie/Filter";
 import List from "../components/Movie/List";

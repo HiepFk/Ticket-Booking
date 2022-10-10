@@ -32,8 +32,7 @@ function CheckOut() {
       quantity: data?.seat?.length,
       price: data?.seat?.length * 5,
     };
-    // console.log(ticket);
-    addTicket(ticket, navigate, axiosJWT, user?.accessToken);
+    addTicket(dispatch, ticket, navigate, axiosJWT, user?.accessToken);
   };
 
   return (

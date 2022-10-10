@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import Loading from "../Loading";
 import { Link } from "react-router-dom";
-import { banner } from "../../apis/home";
+import { useSelector } from "react-redux";
+import styled from "styled-components";
 import SwiperCore, { Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-// import { banner } from "../../utils/banner";
+import Loading from "../Loading";
+import { banner } from "../../apis/home";
 
 import "swiper/css";
 
 function Banner() {
+  const user = useSelector((state) => state.auth?.user);
   const [data, setData] = useState([""]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -51,7 +52,7 @@ function Banner() {
                       <div className="desc">{item?.description}</div>
                       <div className="button">
                         <Link
-                          to={`/movies/ticket/${item?.slug}`}
+                          to={user ? `/movies/ticket/${item?.slug}` : `/login`}
                           className="btn book"
                         >
                           Book now
@@ -78,7 +79,6 @@ const Wrapper = styled.div`
   .item {
     min-height: 100vh;
     position: relative;
-    /* padding: 0 1rem; */
   }
 
   .container {

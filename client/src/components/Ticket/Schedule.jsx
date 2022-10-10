@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import styled from "styled-components";
 
 import { createAxios } from "../../apis/createInstance";
 import { LoginSuccess } from "../../redux/authSlice";
-
 import { getAllScheduleByMovie } from "../../apis/schedule";
-
 import Loading from "../Loading";
-import styled from "styled-components";
 
 function Schedule({ searchParams }) {
   const { id } = useParams();

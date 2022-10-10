@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Routes, Route, Link } from "react-router-dom";
-
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
 import MyInfo from "../components/Me/MyInfo";
 import MyTicket from "../components/Me/MyTicket";
-import styled from "styled-components";
 function Me() {
   const [choise, setChoise] = useState(1);
   const navigate = useNavigate();

@@ -1,9 +1,10 @@
 import React from "react";
-import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import { updateSort, setListView, setGridView } from "../../apis/filter";
+import styled from "styled-components";
 import { BsFillGridFill } from "react-icons/bs";
 import { FaList } from "react-icons/fa";
+
+import { updateSort, setListView, setGridView } from "../../apis/filter";
 
 function Sort() {
   const dispatch = useDispatch();

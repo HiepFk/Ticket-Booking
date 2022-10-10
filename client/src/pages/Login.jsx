@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import img from "../assets/login.jpg";
-import { FaFacebookF, FaGoogle } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
-import { loginUser, signInWithGoogle } from "../apis/auth";
-
 import { useSelector, useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import { FaFacebookF, FaGoogle } from "react-icons/fa";
+
+import { loginUser, signInWithGoogle } from "../apis/auth";
+import img from "../assets/login.jpg";
 
 function Login() {
   const dispatch = useDispatch();

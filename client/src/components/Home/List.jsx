@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Card from "../Card";
 import { SwiperSlide, Swiper } from "swiper/react";
 import SwiperCore, { Autoplay } from "swiper";
-import { banner } from "../../apis/home";
+import { getRandomMovie } from "../../apis/home";
 import Loading from "../Loading";
 
 import "swiper/css";
@@ -12,7 +12,7 @@ function List({ movies, type }) {
   const [data, setData] = useState([""]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    banner(setData, setLoading);
+    getRandomMovie(setData, setLoading);
   }, []);
 
   SwiperCore.use([Autoplay]);

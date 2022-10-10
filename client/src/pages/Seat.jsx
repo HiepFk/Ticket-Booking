@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import styled from "styled-components";
 
 import { createAxios } from "../apis/createInstance";
 import { LoginSuccess } from "../redux/authSlice";
-
 import { getSchedule } from "../apis/schedule";
+
 import Loading from "../components/Loading";
-import styled from "styled-components";
 import screen from "../assets/screen.png";
+
 function Seat() {
   const { id } = useParams();
   const [data, setData] = useState({});

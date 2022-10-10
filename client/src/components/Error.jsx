@@ -1,6 +1,6 @@
 import React from "react";
-import error from "../assets/error.gif";
 import styled from "styled-components";
+import error from "../assets/error.gif";
 function Error() {
   return (
     <Wrapper>

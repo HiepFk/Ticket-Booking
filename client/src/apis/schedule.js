@@ -1,4 +1,5 @@
 // import axios from "axios";
+import { SetAlert } from "../redux/alertSlice";
 const api = process.env.REACT_APP_API_LINK;
 
 export const getAllScheduleByMovie = async (
@@ -58,21 +59,18 @@ export const getSchedule = async (
 };
 
 export const getMyTicket = async (axiosJWT, accessToken, setData) => {
-  // dispatch(GetOrderStart());
   try {
     const res = await axiosJWT.get(`${api}/v1/ticket/myticket`, {
       headers: { token: `Bearer ${accessToken}` },
     });
     setData(res?.data?.ticket);
-    // dispatch(GetticketSuccess(res.data));
   } catch (error) {
     throw error;
-    // dispatch(GetOrderError());
   }
 };
 
 export const addTicket = async (
-  // dispatch,
+  dispatch,
   data,
   navigate,
   axiosJWT,
@@ -82,15 +80,9 @@ export const addTicket = async (
     const res = await axiosJWT.post(`${api}/v1/ticket/userAddTicket`, data, {
       headers: { token: `Bearer ${accessToken}` },
     });
-    // dispatch(ShowAlert(res.data));
+    dispatch(SetAlert(res.data));
     navigate("/me/ticket");
-    // const timeoutID = window.setTimeout(() => {
-    //   dispatch(HideAlert());
-    // }, 3000);
-    // return () => window.clearTimeout(timeoutID);
   } catch (error) {
-    // ErrorMessage(dispatch, error);
-    console.log(error);
-    throw error;
+    dispatch(SetAlert(error?.response?.data));
   }
 };

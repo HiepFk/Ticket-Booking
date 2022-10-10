@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import img from "../assets/login.jpg";
-import { FaFacebookF, FaGoogle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import styled from "styled-components";
+import { FaFacebookF, FaGoogle } from "react-icons/fa";
+
 import { signUp, signInWithGoogle } from "../apis/auth";
+import img from "../assets/login.jpg";
 
 function SignUp() {
   const dispatch = useDispatch();

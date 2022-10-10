@@ -1,11 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import { FaTimes, FaBars } from "react-icons/fa";
 import styled from "styled-components";
 
-import { useSelector, useDispatch } from "react-redux";
 import { logOutUser } from "../apis/auth";
-
 import { links } from "../utils/link";
 import img from "../assets/logo.png";
 

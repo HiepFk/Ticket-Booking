@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
+
 import { updateFilter, clearFilter } from "../../apis/filter";
 import { classify_data, genre_data } from "../../utils/data.js";
 function Filter() {

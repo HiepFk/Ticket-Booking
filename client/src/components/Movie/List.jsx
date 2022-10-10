@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
+
+import { filterMovie, sortMovie, setFilterMovie } from "../../apis/filter";
 import GridView from "./GridView";
 import ListView from "./ListView";
-import { filterMovie, sortMovie, setFilterMovie } from "../../apis/filter";
 
 function List({ movies }) {
   const dispatch = useDispatch();

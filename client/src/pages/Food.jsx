@@ -1,7 +1,7 @@
 import React from "react";
+
 import Banner from "../components/Banner";
 import img from "../assets/banner/food.jpg";
-
 import FoodList from "../components/Food/FoodList";
 function Food() {
   return (

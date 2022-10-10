@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import styled from "styled-components";
+
+import { getMovie } from "../apis/movie";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
-import { getMovie } from "../apis/movie";
-import styled from "styled-components";
 import Banner from "../components/Detail/Banner";
 import Video from "../components/Detail/Video";
+
 function Movie() {
   const dispatch = useDispatch();
   const { id } = useParams();

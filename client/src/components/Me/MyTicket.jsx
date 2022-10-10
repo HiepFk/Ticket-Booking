@@ -1,10 +1,11 @@
 /* eslint-disable jsx-a11y/scope */
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import styled from "styled-components";
+
 import { createAxios } from "../../apis/createInstance";
 import { LoginSuccess } from "../../redux/authSlice";
 import { getMyTicket } from "../../apis/schedule";
-import styled from "styled-components";
 function MyTicket() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth?.user);
