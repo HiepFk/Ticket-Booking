@@ -5,7 +5,8 @@ import Loading from "../Loading";
 import { getAllUser } from "../../apis/user";
 import { LoginSuccess } from "../../redux/authSlice";
 import { createAxios } from "../../apis/createInstance";
-
+import { FaTrash, FaEdit } from "react-icons/fa";
+import { Link } from "react-router-dom";
 function UserTable() {
   const auth = useSelector((state) => state.auth.user);
   const users = useSelector((state) => state.user?.users?.data);
@@ -21,14 +22,86 @@ function UserTable() {
   if (loading) {
     return <Loading />;
   }
+  console.log(users);
   return (
     <Wrapper>
-      {users?.map((item) => {
-        return <h1 key={item?.id}>{item?.name}</h1>;
-      })}
+      <table>
+        <tr>
+          <th className="hiden">STT</th>
+          {/* <th className="hiden">Image</th> */}
+          <th className="hiden">Name</th>
+          <th className="hiden">Email</th>
+          <th className="hiden">Number</th>
+          <th className="hiden">Role</th>
+        </tr>
+        {users?.map((item, index) => {
+          return (
+            <tr key={item?.id} className="tr">
+              <td>{index + 1}</td>
+              {/* <td>
+                <img src={item?.poster} alt="" className="img" />
+              </td> */}
+              <td className="desc hiden">{item?.name}</td>
+              <td className="desc hiden">{item?.email}</td>
+              <td className="desc hiden">{item?.number}</td>
+              <td className="desc hiden">{item?.isAdmin ? "Admin" : "User"}</td>
+              <td>
+                <button
+                  className="icon"
+                  //   onClick={() => deleteProduct(dispatch, id)}
+                >
+                  <FaTrash />
+                </button>
+              </td>
+              <td>
+                <Link to={`${item?.id}`} className="icon">
+                  <FaEdit />
+                </Link>
+              </td>
+            </tr>
+          );
+        })}
+      </table>
     </Wrapper>
   );
 }
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  td,
+  th {
+    text-align: left;
+    padding: 8px;
+  }
+  .desc {
+    font-size: 1rem;
+    letter-spacing: 1px;
+  }
+  .img {
+    width: 10rem;
+    margin-right: 1rem;
+    border-radius: 0.25rem;
+  }
 
+  .icon {
+    color: white;
+    cursor: pointer;
+    background: brown;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    border-radius: 3px;
+    border: none;
+  }
+`;
 export default UserTable;
