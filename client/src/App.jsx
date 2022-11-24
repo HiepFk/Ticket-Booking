@@ -23,36 +23,18 @@ import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Error from "./components/Error";
+import { successAlert, errorAlert } from "./utils/alert";
+
 function App() {
   const dispatch = useDispatch();
   const alert = useSelector((state) => state.alert);
-  const success = () =>
-    toast.success(`${alert.msg}`, {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-  const error = () =>
-    toast.error(`${alert.msg}`, {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
 
   useEffect(() => {
     if (alert.type === "success") {
-      success();
+      successAlert(toast, alert?.msg);
     }
     if (alert.type === "error") {
-      error();
+      errorAlert(toast, alert?.msg);
     }
     dispatch(ClearAlert());
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -61,7 +43,7 @@ function App() {
   return (
     <div>
       <ToastContainer />
-      <Header onClick={success} />
+      <Header />
       <Navbar />
       <Routes>
         <Route exact path="/" element={<Home />} />
