@@ -23,7 +23,6 @@ function UserTable() {
   if (loading) {
     return <Loading />;
   }
-  console.log(users);
   return (
     <Wrapper>
       <table>
