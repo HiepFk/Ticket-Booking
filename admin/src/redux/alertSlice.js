@@ -11,7 +11,7 @@ export const alertSlice = createSlice({
       return {
         ...state,
         type: action.payload.status,
-        msg: action.payload.message,
+        msg: action.payload.msg,
       };
     },
     ClearAlert: (state) => {

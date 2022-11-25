@@ -33,7 +33,7 @@ const createSendToken = (user, statusCode, req, res, msg, refreshTokens) => {
   const { password, ...others } = user._doc;
   res
     .status(statusCode)
-    .json({ ...others, accessToken, status: "success", message: msg });
+    .json({ ...others, accessToken, status: "success", msg });
 };
 
 module.exports = {

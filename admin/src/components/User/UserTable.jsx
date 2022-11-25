@@ -2,17 +2,18 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import Loading from "../Loading";
-import { getAllUser } from "../../apis/user";
+import { getAllUser, deleteUser } from "../../apis/user";
 import { LoginSuccess } from "../../redux/authSlice";
 import { createAxios } from "../../apis/createInstance";
 import { FaTrash, FaEdit } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 function UserTable() {
   const auth = useSelector((state) => state.auth.user);
   const users = useSelector((state) => state.user?.users?.data);
   const loading = useSelector((state) => state.user.loading);
-  const dispatch = useDispatch();
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   let axiosJWT = createAxios(auth, dispatch, LoginSuccess);
 
   useEffect(() => {
@@ -36,7 +37,7 @@ function UserTable() {
         </tr>
         {users?.map((item, index) => {
           return (
-            <tr key={item?.id} className="tr">
+            <tr key={item?._id} className="tr">
               <td>{index + 1}</td>
               {/* <td>
                 <img src={item?.poster} alt="" className="img" />
@@ -48,13 +49,21 @@ function UserTable() {
               <td>
                 <button
                   className="icon"
-                  //   onClick={() => deleteProduct(dispatch, id)}
+                  onClick={() =>
+                    deleteUser(
+                      item?._id,
+                      dispatch,
+                      navigate,
+                      axiosJWT,
+                      auth?.accessToken
+                    )
+                  }
                 >
                   <FaTrash />
                 </button>
               </td>
               <td>
-                <Link to={`${item?.id}`} className="icon">
+                <Link to={`${item?._id}`} className="icon">
                   <FaEdit />
                 </Link>
               </td>

@@ -1,13 +1,13 @@
 const catchAsync = require("./../middleware/catchAsync");
 const AppError = require("./../utils/appError");
-// const cloudinary = require("./../utils/cloudinary");
 
 const handlerFactory = {
   createOne: (Model) =>
     catchAsync(async (req, res, next) => {
       const data = await Model.create(req.body);
       res.status(200).json({
-        status: "Success",
+        status: "success",
+        msg: "Create success",
         data,
       });
     }),
@@ -24,7 +24,7 @@ const handlerFactory = {
       }
 
       res.status(200).json({
-        status: "Success",
+        status: "success",
         data,
       });
     }),
@@ -41,7 +41,7 @@ const handlerFactory = {
       }
 
       res.status(200).json({
-        status: "Success",
+        status: "success",
         data,
       });
     }),
@@ -68,7 +68,7 @@ const handlerFactory = {
       }
 
       res.status(200).json({
-        status: "Success",
+        status: "success",
         results: data.length,
         data,
       });
@@ -79,12 +79,11 @@ const handlerFactory = {
       if (!data) {
         return next(new AppError("No document found with that ID", 404));
       }
-      // if (data.cloudinary_id) {
-      //   await cloudinary.uploader.destroy(data.cloudinary_id);
-      // }
 
       res.status(200).json({
-        status: "Success",
+        status: "success",
+        msg: "Delete success",
+
         data: null,
       });
     }),
@@ -97,7 +96,7 @@ const handlerFactory = {
       }
 
       res.status(200).json({
-        status: "Success",
+        status: "success",
         data: null,
       });
     }),
@@ -113,7 +112,8 @@ const handlerFactory = {
       }
 
       res.status(200).json({
-        status: "Success",
+        status: "success",
+        msg: "Update success",
         data,
       });
     }),

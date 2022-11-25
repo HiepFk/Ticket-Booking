@@ -146,7 +146,7 @@ const authController = {
       (token) => token !== req.cookies.refreshToken
     );
 
-    res.status(200).json({ status: "success", message: "You are loggedout" });
+    res.status(200).json({ status: "success", msg: "You are loggedout" });
   },
   updatePassword: catchAsync(async (req, res, next) => {
     const user = await User.findById(req.user.id).select("+password");

@@ -29,11 +29,13 @@ a {
   padding-left: 15rem;
 }
 .btn_add {
+  border: none;
   color: white;
   background-color: #435ebe;
   font-size: 1rem;
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
+  cursor: pointer;
 }
 .form_search {
   position: relative;
@@ -58,4 +60,22 @@ a {
   right: -4rem;
   font-size: 1.25rem;
   transform: translateY(-50%);
+}
+
+/* info */
+.label_info {
+  width: 10rem;
+  font-size: 1.25rem;
+}
+.input_info {
+  padding: 0.5rem;
+  font-size: 1.25rem;
+  border: 2px solid #ccc;
+  transition: all 0.25s linear;
+  width: 20rem;
+  border-radius: 0.5rem;
+}
+.textarea_info {
+  width: 30rem !important;
+  height: 10rem;
 }

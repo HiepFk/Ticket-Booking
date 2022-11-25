@@ -13,7 +13,7 @@ function MovieListPage() {
     <Wrapper>
       <div className="header">
         <div className="title">Movies</div>
-        <Link to={"/"} className="btn_add">
+        <Link to={"new"} className="btn_add">
           Add new movie
         </Link>
       </div>

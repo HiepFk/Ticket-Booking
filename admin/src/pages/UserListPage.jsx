@@ -6,15 +6,17 @@ import { BiSearch } from "react-icons/bi";
 
 function UserListPage() {
   const [id, setId] = useState("");
+
   const handeSearch = (e) => {
     e.preventDefault();
     console.log(id);
   };
+
   return (
     <Wrapper>
       <div className="header">
         <div className="title">Users</div>
-        <Link to={"/"} className="btn_add">
+        <Link to={"new"} className="btn_add">
           Add new user
         </Link>
       </div>

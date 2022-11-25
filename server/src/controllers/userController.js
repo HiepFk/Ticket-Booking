@@ -17,7 +17,7 @@ const filterObj = (obj, ...notallowed) => {
 const userController = {
   getListUser: factory.getAll(User),
 
-  getUser: factory.getOne(User),
+  getUser: factory.getOneById(User),
 
   createUser: factory.createOne(User),
 

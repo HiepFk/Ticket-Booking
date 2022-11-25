@@ -18,6 +18,8 @@ import {
   AuthLayout,
 } from "./pages";
 import Navbar from "./components/Navbar";
+import MovieNew from "./components/Movie/MovieNew";
+import UserNew from "./components/User/UserNew";
 
 function App() {
   const navigate = useNavigate();
@@ -56,8 +58,10 @@ function App() {
             <Route exact path="/" element={<HomePage />} />
             <Route exact path="/users" element={<UserListPage />} />
             <Route exact path="/users/:id" element={<UserPage />} />
+            <Route exact path="/users/new" element={<UserNew />} />
             <Route exact path="/movies" element={<MovieListPage />} />
             <Route exact path="/movies/:id" element={<MoviePage />} />
+            <Route exact path="/movies/new" element={<MovieNew />} />
             <Route exact path="/food" element={<FoodPage />} />
             <Route exact path="/chart" element={<ChartPage />} />
           </Route>

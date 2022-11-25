@@ -1,23 +1,25 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { FaTrash, FaEdit } from "react-icons/fa";
 import Loading from "../Loading";
-import { getListMovie } from "../../apis/movie";
+
 import { LoginSuccess } from "../../redux/authSlice";
 import { createAxios } from "../../apis/createInstance";
-import { FaTrash, FaEdit } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { getListMovie, deleteMovie } from "../../apis/movie";
 function MovieTable() {
-  const auth = useSelector((state) => state.auth.user);
   const movies = useSelector((state) => state.movie?.movies?.data);
   const loading = useSelector((state) => state.user.loading);
-  const dispatch = useDispatch();
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const auth = useSelector((state) => state.auth.user);
   let axiosJWT = createAxios(auth, dispatch, LoginSuccess);
 
   useEffect(() => {
-    getListMovie(dispatch, axiosJWT, auth?.accessToken);
-  }, []);
+    getListMovie(dispatch);
+  }, [dispatch]);
 
   if (loading) {
     return <Loading />;
@@ -34,7 +36,7 @@ function MovieTable() {
         </tr>
         {movies?.map((item, index) => {
           return (
-            <tr key={item?.id} className="tr">
+            <tr key={item?._id} className="tr">
               <td>{index + 1}</td>
               <td>
                 <img src={item?.poster} alt="" className="img" />
@@ -45,7 +47,15 @@ function MovieTable() {
               <td>
                 <button
                   className="icon"
-                  //   onClick={() => deleteProduct(dispatch, id)}
+                  onClick={() =>
+                    deleteMovie(
+                      item?._id,
+                      dispatch,
+                      navigate,
+                      axiosJWT,
+                      auth?.accessToken
+                    )
+                  }
                 >
                   <FaTrash />
                 </button>
