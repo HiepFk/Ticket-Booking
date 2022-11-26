@@ -1,21 +1,16 @@
-import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { getMovie } from "../apis/movie";
-import Loading from "../components/Loading";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import MovieList from "../components/Movie/MovieList";
+import MovieDetail from "../components/Movie/MovieDetail";
 import MoveInput from "../components/Movie/MoveInput";
+
 function MoviePage() {
-  const { movie, loading } = useSelector((state) => state.movie);
-  const dispatch = useDispatch();
-  const { id } = useParams();
-
-  useEffect(() => {
-    getMovie(dispatch, id);
-  }, [dispatch, id]);
-
-  if (loading) {
-    return <Loading />;
-  }
-  return <MoveInput movie={movie?.data} type="info" />;
+  return (
+    <Routes>
+      <Route exact path="/" element={<MovieList />} />
+      <Route exact path=":id" element={<MovieDetail />} />
+      <Route exact path="new" element={<MoveInput type="new" />} />
+    </Routes>
+  );
 }
 export default MoviePage;

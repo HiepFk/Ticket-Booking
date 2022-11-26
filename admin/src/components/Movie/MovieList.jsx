@@ -1,36 +1,33 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import UserTable from "../components/User/UserTable";
+import MovieTable from "./MovieTable";
 import { BiSearch } from "react-icons/bi";
-
-function UserListPage() {
+function MovieList() {
   const [id, setId] = useState("");
-
   const handeSearch = (e) => {
     e.preventDefault();
     console.log(id);
   };
-
   return (
     <Wrapper>
       <div className="header">
-        <div className="title">Users</div>
+        <div className="title">Movies</div>
         <Link to={"new"} className="btn_add">
-          Add new user
+          Add new movie
         </Link>
       </div>
       <form onSubmit={handeSearch} className="form_search">
         <input
           type="text"
-          placeholder="Search by Id"
+          placeholder="Search by name"
           onChange={(e) => setId(e.target.value)}
           className="input_search"
         />
         <BiSearch className="icon_search" />
       </form>
 
-      <UserTable />
+      <MovieTable />
     </Wrapper>
   );
 }
@@ -47,4 +44,5 @@ const Wrapper = styled.div`
     letter-spacing: 1px;
   }
 `;
-export default UserListPage;
+
+export default MovieList;

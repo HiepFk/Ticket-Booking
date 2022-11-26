@@ -1,24 +1,22 @@
 import HomePage from "./HomePage";
 import LoginPage from "./LoginPage";
 import UserPage from "./UserPage";
-import UserListPage from "./UserListPage";
-import MovieListPage from "./MovieListPage";
 import MoviePage from "./MoviePage";
-import FoodListPage from "./FoodListPage";
 import FoodPage from "./FoodPage";
+import NewsPage from "./NewsPage";
+import CinemaPage from "./CinemaPage";
 import ChartPage from "./ChartPage";
 
 import AuthLayout from "./AuthLayout";
 
 export {
   HomePage,
-  UserPage,
-  UserListPage,
-  MovieListPage,
+  LoginPage,
   MoviePage,
-  FoodListPage,
+  UserPage,
   FoodPage,
   ChartPage,
-  LoginPage,
+  NewsPage,
+  CinemaPage,
   AuthLayout,
 };

@@ -7,6 +7,8 @@ import { addMovie, updateMovie } from "../../apis/movie";
 import { LoginSuccess } from "../../redux/authSlice";
 import { createAxios } from "../../apis/createInstance";
 import MovieFiled from "./MovieFiled";
+
+import Input from "../Input";
 function MoveInput({ type, movie }) {
   const [name, setName] = useState(movie?.name || "");
   const [poster, setPoster] = useState(movie?.poster || "");
@@ -49,69 +51,18 @@ function MoveInput({ type, movie }) {
         {type === "info" ? movie?.name : "Add new movie"}
       </h1>
       <from className="wrapper" onSubmit={handeSubmit}>
-        <div className="container">
-          <label htmlFor="" className="label_info">
-            Name :
-          </label>
-          <input
-            type="text"
-            className="input_info"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </div>
-        <div className="container">
-          <label htmlFor="" className="label_info">
-            Video :
-          </label>
-          <input
-            type="text"
-            className="input_info"
-            value={video}
-            onChange={(e) => setVideo(e.target.value)}
-          />
-        </div>
-        <div className="container">
-          <label htmlFor="" className="label_info">
-            Time :
-          </label>
-          <input
-            type="text"
-            className="input_info"
-            value={time}
-            onChange={(e) => setTime(e.target.value)}
-          />
-        </div>
-        <div className="container">
-          <label htmlFor="" className="label_info">
-            Description :
-          </label>
-          <textarea
-            className="input_info textarea_info"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        </div>
-        <div className="container">
-          <label htmlFor="" className="label_info">
-            Classify :
-          </label>
-          <input
-            className="input_info"
-            value={classify}
-            onChange={(e) => setClassify(e.target.value)}
-          />
-        </div>
-        <div className="container">
-          <label htmlFor="" className="label_info">
-            Genre :
-          </label>
-          <input
-            className="input_info"
-            value={genre}
-            onChange={(e) => setGenre(e.target.value)}
-          />
-        </div>
+        <Input label="Name" setData={setName} data={name} />
+        <Input label="Video" setData={setVideo} data={video} />
+        <Input label="Time" setData={setTime} data={time} />
+        <Input
+          label="Description"
+          setData={setDescription}
+          data={description}
+          inputType="textarea"
+        />
+        <Input label="Classify" setData={setClassify} data={classify} />
+        <Input label="Genre" setData={setGenre} data={genre} />
+
         <MovieFiled
           poster={poster}
           setPoster={setPoster}

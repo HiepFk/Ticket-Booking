@@ -24,23 +24,14 @@ export const getFood = async (setData, setLoading, id) => {
     throw error;
   }
 };
-export const deleteFood = async (
-  setLoading,
-  id,
-  dispatch,
-  navigate,
-  axiosJWT,
-  accessToken
-) => {
-  setLoading(true);
+export const deleteFood = async (id, dispatch, axiosJWT, accessToken) => {
   try {
     const res = await axiosJWT.delete(`${link}/v1/food/${id}`, {
       headers: { token: `Bearer ${accessToken}` },
     });
-    navigate("/food");
     dispatch(SetAlert(res.data));
   } catch (error) {
-    throw error;
+    dispatch(SetAlert(error?.response?.data));
   }
 };
 export const addFood = async (
@@ -58,8 +49,9 @@ export const addFood = async (
       headers: { token: `Bearer ${accessToken}` },
     });
     dispatch(SetAlert(res.data));
-    navigate("/food");
+    navigate("/foods");
   } catch (error) {
+    console.log(error);
     dispatch(SetAlert(error?.response?.data));
   }
 };
@@ -74,6 +66,7 @@ export const updateFood = async (dispatch, id, data, axiosJWT, accessToken) => {
     });
     dispatch(SetAlert(res.data));
   } catch (error) {
+    console.log(error);
     dispatch(SetAlert(error?.response?.data));
   }
 };

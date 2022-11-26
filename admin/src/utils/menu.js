@@ -6,7 +6,7 @@ export const menus = [
   { id: 2, title: "Movies", link: "/movies", icon: <MdMovie /> },
   { id: 3, title: "Users", link: "/users", icon: <FaUserCog /> },
   { id: 4, title: "News", link: "/news", icon: <FaNewspaper /> },
-  { id: 5, title: "Foods", link: "/food", icon: <MdFastfood /> },
-  { id: 6, title: "Cinema", link: "/", icon: <FaBuilding /> },
+  { id: 5, title: "Foods", link: "/foods", icon: <MdFastfood /> },
+  { id: 6, title: "Cinema", link: "/cinemas", icon: <FaBuilding /> },
   { id: 7, title: "Chart", link: "/chart", icon: <FaChartPie /> },
 ];

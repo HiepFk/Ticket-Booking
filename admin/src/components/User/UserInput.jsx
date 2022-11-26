@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { addUser, updateUser } from "../../apis/user";
 import { LoginSuccess } from "../../redux/authSlice";
 import { createAxios } from "../../apis/createInstance";
+import Input from "../Input";
+
 function UserInput({ user, type }) {
   const [name, setName] = useState(user?.name || "");
   const [email, setEmail] = useState(user?.email || "");
@@ -37,39 +39,10 @@ function UserInput({ user, type }) {
     <Wrapper>
       <h1 className="name">{type === "info" ? user?.name : "Add new user"}</h1>
       <from className="wrapper" onSubmit={handeSubmit}>
-        <div className="container">
-          <label htmlFor="" className="label_info">
-            Name :
-          </label>
-          <input
-            type="text"
-            className="input_info"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </div>
-        <div className="container">
-          <label htmlFor="" className="label_info">
-            Email :
-          </label>
-          <input
-            type="email"
-            className="input_info"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div className="container">
-          <label htmlFor="" className="label_info">
-            Phone :
-          </label>
-          <input
-            type="text"
-            className="input_info"
-            value={number}
-            onChange={(e) => setNumber(e.target.value)}
-          />
-        </div>
+        <Input label="Name" setData={setName} data={name} />
+        <Input label="Email" setData={setEmail} data={email} type="email" />
+        <Input label="Number" setData={setNumber} data={number} />
+
         <div className="container">
           <label htmlFor="role" className="label_info">
             Role :

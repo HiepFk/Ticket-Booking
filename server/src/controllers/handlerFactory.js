@@ -1,5 +1,7 @@
+const removeAccents = require("../utils/removeAccents");
 const catchAsync = require("./../middleware/catchAsync");
 const AppError = require("./../utils/appError");
+const slugify = require("slugify");
 
 const handlerFactory = {
   createOne: (Model) =>
@@ -83,7 +85,6 @@ const handlerFactory = {
       res.status(200).json({
         status: "success",
         msg: "Delete success",
-
         data: null,
       });
     }),
@@ -102,6 +103,12 @@ const handlerFactory = {
     }),
   updateOne: (Model) =>
     catchAsync(async (req, res, next) => {
+      // req.body.slug = removeAccents(req.body.name);
+      // console.log(req.body.slug);
+
+      const slug = removeAccents(req.body.name);
+      req.body.slug = slugify(slug, { lower: true });
+
       const data = await Model.findByIdAndUpdate(req.params.id, req.body, {
         new: true,
         runValidators: true,

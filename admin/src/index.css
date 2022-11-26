@@ -40,6 +40,7 @@ a {
 .form_search {
   position: relative;
   width: 15rem;
+  margin-bottom: 1.5rem;
 }
 .input_search {
   padding: 0.5rem;
@@ -78,4 +79,41 @@ a {
 .textarea_info {
   width: 30rem !important;
   height: 10rem;
+}
+
+/* table */
+.table_list {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  text-align: left;
+  padding: 8px;
+}
+.table_desc {
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+.table_img {
+  width: 10rem;
+  margin-right: 1rem;
+  border-radius: 0.25rem;
+}
+
+.table_icon {
+  color: white;
+  cursor: pointer;
+  background: brown;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  border-radius: 3px;
+  border: none;
 }
