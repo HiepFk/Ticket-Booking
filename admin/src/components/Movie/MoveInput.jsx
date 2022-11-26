@@ -34,6 +34,7 @@ function MoveInput({ type, movie }) {
       classify,
       genre,
     };
+
     if (type === "info") {
       updateMovie(dispatch, movie?._id, data, axiosJWT, auth?.accessToken);
     } else {
@@ -116,6 +117,7 @@ function MoveInput({ type, movie }) {
           setPoster={setPoster}
           background={background}
           setBackground={setBackground}
+          dispatch={dispatch}
         />
         {type === "info" ? (
           <button className="btn_add" type="submit" onClick={handeSubmit}>

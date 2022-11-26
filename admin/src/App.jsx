@@ -12,6 +12,7 @@ import {
   UserListPage,
   MovieListPage,
   MoviePage,
+  FoodListPage,
   FoodPage,
   ChartPage,
   LoginPage,
@@ -20,6 +21,7 @@ import {
 import Navbar from "./components/Navbar";
 import MovieNew from "./components/Movie/MovieNew";
 import UserNew from "./components/User/UserNew";
+import FoodNew from "./components/Food/FoodNew";
 
 function App() {
   const navigate = useNavigate();
@@ -62,6 +64,8 @@ function App() {
             <Route exact path="/movies" element={<MovieListPage />} />
             <Route exact path="/movies/:id" element={<MoviePage />} />
             <Route exact path="/movies/new" element={<MovieNew />} />
+            <Route exact path="/food" element={<FoodListPage />} />
+            <Route exact path="/food" element={<FoodNew />} />
             <Route exact path="/food" element={<FoodPage />} />
             <Route exact path="/chart" element={<ChartPage />} />
           </Route>
