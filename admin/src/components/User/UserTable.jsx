@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Loading from "../Loading";
-import { getAllUser, deleteUser } from "../../apis/user";
-import { LoginSuccess } from "../../redux/authSlice";
-import { createAxios } from "../../apis/createInstance";
 import { FaTrash, FaEdit } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
+
+import { LoginSuccess } from "../../redux/authSlice";
+import { getAllUser, deleteUser } from "../../apis/user";
+import { createAxios } from "../../apis/createInstance";
+import Loading from "../Loading";
 function UserTable() {
   const auth = useSelector((state) => state.auth.user);
   const users = useSelector((state) => state.user?.users?.data);

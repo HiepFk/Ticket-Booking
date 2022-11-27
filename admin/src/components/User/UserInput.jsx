@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { addUser, updateUser } from "../../apis/user";
 import { LoginSuccess } from "../../redux/authSlice";
+import { addUser, updateUser } from "../../apis/user";
 import { createAxios } from "../../apis/createInstance";
 import Input from "../Input";
+import { Wrapper } from "../../utils/wrapperFormStyle";
 
 function UserInput({ user, type }) {
   const [name, setName] = useState(user?.name || "");
@@ -72,17 +72,5 @@ function UserInput({ user, type }) {
     </Wrapper>
   );
 }
-
-const Wrapper = styled.div`
-  padding: 1.5rem 2rem;
-  h1 {
-    margin-bottom: 1rem;
-  }
-  .container {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1.25rem;
-  }
-`;
 
 export default UserInput;

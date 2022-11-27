@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
-import MovieTable from "./MovieTable";
 import { BiSearch } from "react-icons/bi";
+import styled from "styled-components";
+
+import MovieTable from "./MovieTable";
 function MovieList() {
   const [id, setId] = useState("");
   const handeSearch = (e) => {

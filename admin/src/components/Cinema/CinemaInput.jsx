@@ -1,23 +1,23 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import DataEdit from "../DataEdit";
 
 import FileUpload from "../FileUpload";
 import Input from "../Input";
-import DataEdit from "../DataEdit";
 import { Wrapper } from "../../utils/wrapperFormStyle";
 
-function FoodInput({ type, data }) {
+function CinemaInput({ type, data }) {
   const dispatch = useDispatch();
 
   const [name, setName] = useState(data?.name || "");
-  const [price, setPrice] = useState(data?.price || "");
-  const [priceDiscount, setPriceDiscount] = useState(data?.priceDiscount || "");
+  const [address, setAddress] = useState(data?.address || "");
+  const [city, setCity] = useState(data?.city || "");
   const [img, setImg] = useState(data?.img || "");
 
   const dataUpload = {
     name,
-    price,
-    priceDiscount,
+    address,
+    city,
     img,
   };
 
@@ -26,22 +26,18 @@ function FoodInput({ type, data }) {
       <h1 className="name">{type === "info" ? data?.name : "Add new food"}</h1>
       <from className="wrapper">
         <Input label="Name" setData={setName} data={name} />
-        <Input label="Price" setData={setPrice} data={price} />
-        <Input
-          label="PriceDiscount"
-          setData={setPriceDiscount}
-          data={priceDiscount}
-        />
+        <Input label="Address" setData={setAddress} data={address} />
+        <Input label="city" setData={setCity} data={city} />
 
         <FileUpload
           data={img}
           setData={setImg}
           dispatch={dispatch}
-          type="food"
+          type="cinema"
         />
         <DataEdit
           typeBtn={type}
-          typeAPi="food"
+          typeAPi="cinema"
           dataUpload={dataUpload}
           id={data?._id}
         />
@@ -50,4 +46,4 @@ function FoodInput({ type, data }) {
   );
 }
 
-export default FoodInput;
+export default CinemaInput;

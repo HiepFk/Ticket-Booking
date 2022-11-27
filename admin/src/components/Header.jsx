@@ -1,8 +1,9 @@
 import React from "react";
-import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { Logout } from "../apis/auth";
 import { BiLogOut } from "react-icons/bi";
+import styled from "styled-components";
+
+import { Logout } from "../apis/auth";
 import img from "../assets/admin_img.jpg";
 function Header() {
   const dispatch = useDispatch();

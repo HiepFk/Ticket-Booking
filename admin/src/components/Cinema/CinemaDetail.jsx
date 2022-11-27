@@ -2,19 +2,19 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getDoc } from "../../apis/handle";
 import Loading from "../Loading";
-import FoodInput from "./FoodInput";
-function FoodDetail() {
+import CinemaInput from "./CinemaInput";
+function CinemaDetail() {
   const { id } = useParams();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    getDoc(setData, setLoading, "food", id);
+    getDoc(setData, setLoading, "cinema", id);
   }, [id]);
-
   if (loading) {
     return <Loading />;
   }
-  return <FoodInput data={data} type="info" />;
+
+  return <CinemaInput data={data} type="info" />;
 }
 
-export default FoodDetail;
+export default CinemaDetail;

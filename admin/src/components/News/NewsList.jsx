@@ -6,24 +6,23 @@ import { getListDoc } from "../../apis/handle";
 import Loading from "../Loading";
 import IconEdit from "../IconEdit";
 
-function FoodList() {
+function NewsList() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    getListDoc(setData, setLoading, "food");
+    getListDoc(setData, setLoading, "news");
   }, []);
 
   if (loading) {
     return <Loading />;
   }
-
   return (
     <Wrapper>
       <div className="header">
-        <div className="title">Foods</div>
+        <div className="title">Cinemas</div>
         <Link to={"new"} className="btn_add">
-          Add new food
+          Add new cinema
         </Link>
       </div>
       <table className="table_list">
@@ -31,8 +30,8 @@ function FoodList() {
           <th>STT</th>
           <th>Image</th>
           <th>Name</th>
-          <th>Price</th>
-          <th>Price discount</th>
+          <th>Address</th>
+          <th>City</th>
         </tr>
         {data?.map((item, index) => {
           return (
@@ -42,9 +41,9 @@ function FoodList() {
                 <img src={item?.img} alt="" className="table_img" />
               </td>
               <td className="table_desc">{item?.name}</td>
-              <td className="table_desc">{item?.price}</td>
-              <td className="table_desc">{item?.priceDiscount}</td>
-              <IconEdit id={item?._id} slug={item?.slug} type="food" />
+              <td className="table_desc">{item?.city}</td>
+              <td className="table_desc">{item?.address}</td>
+              <IconEdit id={item?._id} slug={item?.slug} type="cimena" />
             </tr>
           );
         })}
@@ -65,4 +64,4 @@ const Wrapper = styled.div`
     letter-spacing: 1px;
   }
 `;
-export default FoodList;
+export default NewsList;
