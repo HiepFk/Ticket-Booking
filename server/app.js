@@ -26,9 +26,9 @@ const reviewRoute = require("./src/routes/reviewRoute");
 
 const app = express();
 
-// app.use(credentials);
-// app.use(cors(corsOptions));
-app.use(cors()); //And add this line as well
+app.use(credentials);
+app.use(cors(corsOptions));
+// app.use(cors()); //And add this line as well
 // app.use((req, res, next) => {
 //   res.setHeader("Access-Control-Allow-Origin", "*");
 //   res.setHeader(
