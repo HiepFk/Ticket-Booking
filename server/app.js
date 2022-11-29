@@ -26,19 +26,19 @@ const reviewRoute = require("./src/routes/reviewRoute");
 
 const app = express();
 
-// app.use(credentials);
-// app.use(cors(corsOptions));
-app.use((res, req, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-  );
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
+app.use(credentials);
+app.use(cors(corsOptions));
+// app.use((res, req, next) => {
+//   res.setHeader("Access-Control-Allow-Origin", "*");
+//   res.setHeader(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+//   );
+//   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
 
-  next();
-});
-app.use(cors()); //And add this line as well
+//   next();
+// });
+// app.use(cors()); //And add this line as well
 
 app.use(cookieParser());
 
