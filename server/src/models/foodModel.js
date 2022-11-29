@@ -33,12 +33,6 @@ foodSchema.pre("save", function (next) {
   next();
 });
 
-// foodSchema.pre(/^findOneAnd/, async function (next) {
-//   this.r = await this.clone().findOne();
-//   const name = removeAccents(this.r.name);
-//   this.r.slug = slugify(name, { lower: true });
-//   next();
-// });
 const Food = mongoose.model("Food", foodSchema);
 
 module.exports = Food;

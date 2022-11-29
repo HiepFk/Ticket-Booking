@@ -19,12 +19,6 @@ const roomSchema = new mongoose.Schema(
   }
 );
 
-// roomSchema.virtual("schedules", {
-//   ref: "Schedule",
-//   foreignField: "room",
-//   localField: "_id",
-// });
-
 roomSchema.pre(/^find/, function (next) {
   this.populate({
     path: "cinema",

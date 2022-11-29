@@ -30,12 +30,6 @@ const scheduleSchema = new mongoose.Schema(
   }
 );
 
-// scheduleSchema.virtual("rooms", {
-//   ref: "Room",
-//   foreignField: "schedule",
-//   localField: "_id",
-// });
-
 scheduleSchema.pre(/^find/, function (next) {
   this.populate({
     path: "room",

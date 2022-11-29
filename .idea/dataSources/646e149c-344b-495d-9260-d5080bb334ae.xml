@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="TicketBooking@cluster0.tohaz.mongodb.net">
+  <database-model serializer="dbm" dbms="MONGO" family-id="MONGO" format-version="4.43">
+    <root id="1">
+      <ServerVersion>5.0.14</ServerVersion>
+    </root>
+    <schema id="2" parent="1" name="CourseFK"/>
+    <schema id="3" parent="1" name="GroceryShop"/>
+    <schema id="4" parent="1" name="Natour"/>
+    <schema id="5" parent="1" name="StudentA708"/>
+    <schema id="6" parent="1" name="TicketBooking">
+      <Current>1</Current>
+    </schema>
+    <schema id="7" parent="1" name="TiredCity"/>
+    <schema id="8" parent="1" name="admin"/>
+    <schema id="9" parent="1" name="local"/>
+    <table id="10" parent="6" name="cinemas"/>
+    <table id="11" parent="6" name="foods"/>
+    <table id="12" parent="6" name="movies"/>
+    <table id="13" parent="6" name="news"/>
+    <table id="14" parent="6" name="revations"/>
+    <table id="15" parent="6" name="reviews"/>
+    <table id="16" parent="6" name="rooms"/>
+    <table id="17" parent="6" name="schedules"/>
+    <table id="18" parent="6" name="tickets"/>
+    <table id="19" parent="6" name="users"/>
+    <column id="20" parent="10" name="_id">
+      <DataType>ObjectId|12s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="21" parent="10" name="address">
+      <DataType>String|12s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="22" parent="10" name="city">
+      <DataType>String|12s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="23" parent="10" name="createdAt">
+      <DataType>ISODate|91s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="24" parent="10" name="name">
+      <DataType>String|12s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="25" parent="10" name="slug">
+      <DataType>String|12s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="26" parent="10" name="updatedAt">
+      <DataType>ISODate|91s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="27" parent="10" name="__v">
+      <DataType>Int32|4s</DataType>
+      <Position>2</Position>
+    </column>
+    <column id="28" parent="11" name="_id">
+      <DataType>ObjectId|12s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="29" parent="11" name="__v">
+      <DataType>Int32|4s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="30" parent="11" name="createdAt">
+      <DataType>ISODate|91s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="31" parent="11" name="img">
+      <DataType>String|12s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="32" parent="11" name="name">
+      <DataType>String|12s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="33" parent="11" name="price">
+      <DataType>Double|8s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="34" parent="11" name="priceDiscount">
+      <DataType>Int32|4s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="35" parent="11" name="slug">
+      <DataType>String|12s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="36" parent="11" name="updatedAt">
+      <DataType>ISODate|91s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="37" parent="12" name="_id">
+      <DataType>ObjectId|12s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="38" parent="12" name="__v">
+      <DataType>Int32|4s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="39" parent="12" name="background">
+      <DataType>String|12s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="40" parent="12" name="classify">
+      <DataType>String|12s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="41" parent="12" name="createdAt">
+      <DataType>ISODate|91s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="42" parent="12" name="description">
+      <DataType>String|12s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="43" parent="12" name="genre">
+      <DataType>Array|2003s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="44" parent="12" name="name">
+      <DataType>String|12s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="45" parent="12" name="poster">
+      <DataType>String|12s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="46" parent="12" name="price">
+      <DataType>Double|8s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="47" parent="12" name="priceDiscount">
+      <DataType>Int32|4s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="48" parent="12" name="ratingsAverage">
+      <DataType>Double|8s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="49" parent="12" name="slug">
+      <DataType>String|12s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="50" parent="12" name="time">
+      <DataType>String|12s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="51" parent="12" name="updatedAt">
+      <DataType>ISODate|91s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="52" parent="12" name="video">
+      <DataType>String|12s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="53" parent="12" name="ratingsQuantity">
+      <DataType>Int32|4s</DataType>
+      <Position>2</Position>
+    </column>
+    <column id="54" parent="12" name="release_date">
+      <DataType>ISODate|91s</DataType>
+      <Position>3</Position>
+    </column>
+    <column id="55" parent="16" name="_id">
+      <DataType>ObjectId|12s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="56" parent="16" name="__v">
+      <DataType>Int32|4s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="57" parent="16" name="cinema">
+      <DataType>ObjectId|12s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="58" parent="16" name="createdAt">
+      <DataType>ISODate|91s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="59" parent="16" name="name">
+      <DataType>String|12s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="60" parent="16" name="updatedAt">
+      <DataType>ISODate|91s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="61" parent="17" name="_id">
+      <DataType>ObjectId|12s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="62" parent="17" name="__v">
+      <DataType>Int32|4s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="63" parent="17" name="createdAt">
+      <DataType>ISODate|91s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="64" parent="17" name="day">
+      <DataType>String|12s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="65" parent="17" name="movie">
+      <DataType>ObjectId|12s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="66" parent="17" name="room">
+      <DataType>ObjectId|12s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="67" parent="17" name="time">
+      <DataType>String|12s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="68" parent="17" name="updatedAt">
+      <DataType>ISODate|91s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="69" parent="17" name="seatAvailable">
+      <DataType>list|4999545s</DataType>
+      <Position>2</Position>
+    </column>
+    <column id="70" parent="17" name="seatUnAvailable">
+      <DataType>list|4999545s</DataType>
+      <Position>3</Position>
+    </column>
+    <column id="71" parent="18" name="_id">
+      <DataType>ObjectId|12s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="72" parent="18" name="__v">
+      <DataType>Int32|4s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="73" parent="18" name="createdAt">
+      <DataType>ISODate|91s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="74" parent="18" name="price">
+      <DataType>Int32|4s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="75" parent="18" name="quantity">
+      <DataType>Int32|4s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="76" parent="18" name="schedule">
+      <DataType>ObjectId|12s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="77" parent="18" name="updatedAt">
+      <DataType>ISODate|91s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="78" parent="18" name="user">
+      <DataType>ObjectId|12s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="79" parent="18" name="seat">
+      <DataType>Array|2003s</DataType>
+      <Position>2</Position>
+    </column>
+    <column id="80" parent="19" name="_id">
+      <DataType>ObjectId|12s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="81" parent="19" name="__v">
+      <DataType>Int32|4s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="82" parent="19" name="createdAt">
+      <DataType>ISODate|91s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="83" parent="19" name="email">
+      <DataType>String|12s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="84" parent="19" name="isAdmin">
+      <DataType>Boolean|12s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="85" parent="19" name="name">
+      <DataType>String|12s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="86" parent="19" name="number">
+      <DataType>String|12s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="87" parent="19" name="updatedAt">
+      <DataType>ISODate|91s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="88" parent="19" name="password">
+      <DataType>String|12s</DataType>
+      <Position>2</Position>
+    </column>
+  </database-model>
+</dataSource>
