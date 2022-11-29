@@ -7,7 +7,12 @@ const mongoSanitize = require("express-mongo-sanitize");
 const xss = require("xss-clean");
 const cookieParser = require("cookie-parser");
 
+const corsOptions = require("./src/config/corsOptions");
+const credentials = require("./src/middleware/credentials");
+
 const globalErrorHandler = require("./src/middleware/errorHandle");
+
+const AppError = require("./src/utils/appError");
 
 const userRoute = require("./src/routes/userRoute");
 const movieRoute = require("./src/routes/movieRoute");
@@ -16,12 +21,8 @@ const roomRoute = require("./src/routes/roomRoute");
 const scheduleRoute = require("./src/routes/scheduleRoute");
 const foodRoute = require("./src/routes/foodRoute");
 const newsRoute = require("./src/routes/newsRoute");
-
 const ticketRoute = require("./src/routes/ticketRoute");
 const reviewRoute = require("./src/routes/reviewRoute");
-
-const corsOptions = require("./src/config/corsOptions");
-const credentials = require("./src/middleware/credentials");
 
 const app = express();
 
