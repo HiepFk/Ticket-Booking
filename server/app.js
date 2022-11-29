@@ -28,17 +28,17 @@ const app = express();
 
 // app.use(credentials);
 // app.use(cors(corsOptions));
-// app.use(cors()); //And add this line as well
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-  );
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
-  res.setHeader("Access-Control-Allow-Credential", true);
-  next();
-});
+app.use(cors()); //And add this line as well
+// app.use((req, res, next) => {
+//   res.setHeader("Access-Control-Allow-Origin", "*");
+//   res.setHeader(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+//   );
+//   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
+//   res.setHeader("Access-Control-Allow-Credential", true);
+//   next();
+// });
 
 app.use(cookieParser());
 
